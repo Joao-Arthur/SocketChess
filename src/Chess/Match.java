@@ -6,8 +6,8 @@ import Board.Board;
 public class Match {
     public Match() {
         final var matchScreen = createMatchScreen();
-        matchScreen.add(new Board(), BorderLayout.CENTER);
-
+        matchScreen.add(createSidebar(), BorderLayout.EAST);
+        matchScreen.add(new Board());
     }
 
     private JFrame createMatchScreen() {
@@ -20,4 +20,15 @@ public class Match {
         return matchScreen;
     }
 
+    private JPanel createSidebar() {
+        final var sidebar = new JPanel();
+        sidebar.add(createSidebarButton("desistir"));
+        return sidebar;
+    }
+
+    private JButton createSidebarButton(String title) {
+        final var sidebarButton = new JButton(title);
+        sidebarButton.setSize(200, 30);
+        return sidebarButton;
+    }
 }

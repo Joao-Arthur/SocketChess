@@ -7,28 +7,36 @@ public class Board extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
-        this.getHeight();
-        this.getWidth();
-        final var totalSize = Math.min(getHeight(), getWidth());
-        final var squareSize = totalSize / 8;
-
         super.paintComponent(g);
         final var drawer = (Graphics2D) g;
         drawer.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        var blueSquare = true;
+        final var height = getHeight();
+        final var width = getWidth();
+
+        final var totalSize = Math.min(height, width);
+        final var paddingX = (width - totalSize) / 2;
+        final var paddingY = (height - totalSize) / 2;
+
+        final var squareSize = totalSize / 8;
+
+        var darkSquare = true;
         for (int boardWidthIndex = 0; boardWidthIndex < 8; boardWidthIndex++) {
-            blueSquare = !blueSquare;
+            darkSquare = !darkSquare;
             for (int boardHeightIndex = 0; boardHeightIndex < 8; boardHeightIndex++) {
-                if (blueSquare) {
-                    drawer.setPaint(Color.BLUE);
+                if (darkSquare) {
+                    drawer.setPaint(BoardColors.DARK);
                 } else {
-                    drawer.setPaint(Color.BLACK);
+                    drawer.setPaint(BoardColors.LIGHT);
                 }
-                blueSquare = !blueSquare;
-                drawer.fillRect((boardHeightIndex) * squareSize, (boardWidthIndex) * squareSize, squareSize,
-                        squareSize);
+                darkSquare = !darkSquare;
+
+                final var x = paddingX + boardHeightIndex * squareSize;
+                final var y = paddingY + boardWidthIndex * squareSize;
+
+                drawer.fillRect(x, y, squareSize, squareSize);
             }
         }
     }
+
 }
