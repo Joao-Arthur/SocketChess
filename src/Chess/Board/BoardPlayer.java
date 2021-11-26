@@ -1,3 +1,4 @@
+package Board;
 public enum BoardPlayer {
     NONE("NONE"),
     WHITE("WHITE"),

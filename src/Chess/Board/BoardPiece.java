@@ -1,3 +1,4 @@
+package Board;
 public enum BoardPiece {
      NONE("NONE"),
      KING("KING"),

@@ -1,3 +1,4 @@
+package Board;
 public class BoardModel {
 
     private BoardHouse[][] board = { { new BoardHouse(BoardPiece.ROOK, BoardPlayer.BLACK),

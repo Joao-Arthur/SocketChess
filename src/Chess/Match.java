@@ -1,6 +1,8 @@
 import java.awt.*;
 import javax.swing.*;
 
+import Board.Board;
+
 public class Match {
     public Match() {
         final var matchScreen = createMatchScreen();
