@@ -1,8 +1,8 @@
 public class BoardHouse {
-    String piece;
-    String player;
+    BoardPiece piece;
+    BoardPlayer player;
 
-    public BoardHouse(String piece, String player) {
+    public BoardHouse(BoardPiece piece, BoardPlayer player) {
         this.piece = piece;
         this.player = player;
     }
