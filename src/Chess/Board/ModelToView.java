@@ -15,8 +15,9 @@ public class ModelToView {
         final var currentHouse = boardModel.getModelHouse(yIndex, xIndex);
         if(currentHouse == null)
             return null;
-        if (!boardImages.imagesMap.containsKey(currentHouse.player.toString() + "_" + currentHouse.piece.toString()))
-        return null;
-        return boardImages.imagesMap.get(currentHouse.player.toString() + "_" + currentHouse.piece.toString());
+        final var key = currentHouse.player + "_" + currentHouse.piece;
+        if (!boardImages.imagesMap.containsKey(key))
+            return null;
+        return boardImages.imagesMap.get(key);
     }
 }

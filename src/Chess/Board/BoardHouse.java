@@ -1,8 +1,8 @@
 package Board;
 
 public class BoardHouse {
-    public BoardPiece piece;
-    public BoardPlayer player;
+    public final BoardPiece piece;
+    public final BoardPlayer player;
 
     public BoardHouse(BoardPiece piece, BoardPlayer player) {
         this.piece = piece;

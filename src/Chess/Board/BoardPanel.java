@@ -57,40 +57,32 @@ public class BoardPanel extends JPanel {
         super.paintComponent(g);
         final var drawer = (Graphics2D) g;
         drawer.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
         final var height = getHeight();
         final var width = getWidth();
-
         final var totalSize = Math.min(height, width);
         final var paddingX = (width - totalSize) / 2;
         final var paddingY = (height - totalSize) / 2;
-
         final var squareSize = totalSize / 8;
-
-        var darkSquare = true;
         for (int yIndex = 0; yIndex < 8; yIndex++) {
-            darkSquare = !darkSquare;
             for (int xIndex = 0; xIndex < 8; xIndex++) {
-                if (darkSquare) {
-                    drawer.setPaint(BoardColors.DARK);
-                } else {
-                    drawer.setPaint(BoardColors.LIGHT);
-                }
-
-                darkSquare = !darkSquare;
-
                 final var x = paddingX + xIndex * squareSize;
                 final var y = paddingY + yIndex * squareSize;
-
-                if (isSquareClicked(x, y, squareSize))
-                    drawer.setPaint(BoardColors.FOCUS);
-
-                drawer.fillRect(x, y, squareSize, squareSize);    
-
+                drawer.setPaint(getSquareColor(x, y, squareSize, xIndex, yIndex));
+                drawer.fillRect(x, y, squareSize, squareSize);
                 final var imageToDraw = modelToView.getPieceImage(yIndex, xIndex);
                 if(imageToDraw != null)
                     drawer.drawImage(imageToDraw, x, y, squareSize, squareSize, this);
             }
+        }
+    }
+
+    private Color getSquareColor(int x, int y, int squareSize, int xIndex, int yIndex) {
+        if (isSquareClicked(x, y, squareSize))
+            return BoardColors.FOCUS;
+        if ((xIndex+ yIndex) % 2 == 1) {
+            return BoardColors.DARK;
+        } else {
+            return BoardColors.LIGHT;
         }
     }
 }
