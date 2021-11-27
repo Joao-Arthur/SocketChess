@@ -36,16 +36,16 @@ public class Lobby extends JFrame {
 
     private JTable createMatchesTable() {
         final String data[][] = {
-            { "João", new Date().toString(), "17636" },
-            { "Pedro", new Date().toString(), "17636" },
-            { "Marcos", new Date().toString(), "17636" },
-            { "João", new Date().toString(), "17636" },
-            { "Pedro", new Date().toString(), "17636" }
+                { "João", new Date().toString(), "17636" },
+                { "Pedro", new Date().toString(), "17636" },
+                { "Marcos", new Date().toString(), "17636" },
+                { "João", new Date().toString(), "17636" },
+                { "Pedro", new Date().toString(), "17636" }
         };
         final String column[] = {
-            "Nome do jogador",
-            "Hora criação",
-            "Porta"
+                "Nome do jogador",
+                "Hora criação",
+                "Porta"
         };
 
         final var matchesTable = new JTable();
@@ -56,7 +56,6 @@ public class Lobby extends JFrame {
             }
         });
         matchesTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
         matchesTable.setAutoCreateRowSorter(true);
         matchesTable.getTableHeader().setReorderingAllowed(false);
         matchesTable.setVerifyInputWhenFocusTarget(false);

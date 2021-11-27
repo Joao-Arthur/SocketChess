@@ -77,7 +77,7 @@ public class BoardModel {
         }
     };
 
-    public void updateModel(BoardHouse from, BoardHouse to) {
+    public void movePiece(BoardHouse from, BoardHouse to) {
         if (from == null)
             return;
         if (to == null)

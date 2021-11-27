@@ -1,7 +1,11 @@
 package Board;
 
-import java.awt.*;
-import javax.swing.*;
+import javax.swing.JPanel;
+import java.awt.Point;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Color;
+import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -10,46 +14,66 @@ public class BoardPanel extends JPanel {
     Point lastClick;
     BoardImages boardImages;
     ModelToView modelToView;
-    
+
     public BoardPanel() {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
                 lastClick = currentClick;
                 currentClick = e.getPoint();
+                verifyMovedPiece();
                 repaint();
             }
         });
-
-       modelToView = new ModelToView();
-       boardImages = new BoardImages();
+        modelToView = new ModelToView();
+        boardImages = new BoardImages();
     }
 
-    private boolean isValueInLimits(int point, int initialValue, int finalValue) {
-        return point >= initialValue && point <= finalValue;
+    private void verifyMovedPiece() {
+        if (currentClick == null)
+            return;
+        if (lastClick == null)
+            return;
+        final var height = getHeight();
+        final var width = getWidth();
+        final var totalSize = Math.min(height, width);
+        final var paddingX = (width - totalSize) / 2;
+        final var paddingY = (height - totalSize) / 2;
+        final var squareSize = totalSize / 8;
+        final var currentXClicked = (((int) currentClick.getX() - paddingX) / squareSize);
+        final var lastXClicked = (((int) lastClick.getX() - paddingX) / squareSize);
+        final var currentYClicked = (((int) currentClick.getY() - paddingY) / squareSize);
+        final var lastYClicked = (((int) lastClick.getY() - paddingY) / squareSize);
+        final var from = new Point(lastXClicked, lastYClicked);
+        final var to = new Point(currentXClicked, currentYClicked);
+        if (from.equals(to))
+            return;
+        modelToView.movePiece(from, to);
     }
 
-    private boolean isPointInDimension(double value, int dimension, int size) {
-        return isValueInLimits((int) value, dimension, dimension + size);
-    }
-
-    private boolean isPointClicked(int x, int y, int squareSize, Point point) {
-        return isPointInDimension(point.getX(), x, squareSize) && isPointInDimension(point.getY(), y, squareSize);
+    private boolean isPointClicked(int x, int y, Point point) {
+        final var height = getHeight();
+        final var width = getWidth();
+        final var totalSize = Math.min(height, width);
+        final var paddingX = (width - totalSize) / 2;
+        final var paddingY = (height - totalSize) / 2;
+        final var squareSize = totalSize / 8;
+        return ((((int) point.getX() - paddingX) / squareSize) == (x - paddingX) / squareSize &&
+                (((int) point.getY() - paddingY) / squareSize) == (y - paddingY) / squareSize);
     }
 
     private boolean isSquareClicked(int x, int y, int squareSize) {
         if (currentClick == null)
             return false;
-        final var isCurrentClicked = isPointClicked(x, y, squareSize, currentClick);
+        final var isCurrentClicked = isPointClicked(x, y, currentClick);
         if (lastClick == null)
             return isCurrentClicked;
-        final var isLastClicked = isPointClicked(x, y, squareSize, lastClick);
+        final var isLastClicked = isPointClicked(x, y, lastClick);
         if (isLastClicked && isCurrentClicked) {
             currentClick = null;
             return false;
         }
         return isCurrentClicked;
-
     }
 
     @Override
@@ -69,8 +93,8 @@ public class BoardPanel extends JPanel {
                 final var y = paddingY + yIndex * squareSize;
                 drawer.setPaint(getSquareColor(x, y, squareSize, xIndex, yIndex));
                 drawer.fillRect(x, y, squareSize, squareSize);
-                final var imageToDraw = modelToView.getPieceImage(yIndex, xIndex);
-                if(imageToDraw != null)
+                final var imageToDraw = modelToView.getPieceImage(xIndex, yIndex);
+                if (imageToDraw != null)
                     drawer.drawImage(imageToDraw, x, y, squareSize, squareSize, this);
             }
         }
@@ -79,7 +103,7 @@ public class BoardPanel extends JPanel {
     private Color getSquareColor(int x, int y, int squareSize, int xIndex, int yIndex) {
         if (isSquareClicked(x, y, squareSize))
             return BoardColors.FOCUS;
-        if ((xIndex+ yIndex) % 2 == 1) {
+        if ((xIndex + yIndex) % 2 == 1) {
             return BoardColors.DARK;
         } else {
             return BoardColors.LIGHT;
