@@ -1,14 +1,29 @@
 package Board;
 
 import java.awt.*;
+import java.io.*;
+import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.*;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
 
 public class BoardPanel extends JPanel {
     Point currentClick;
     Point lastClick;
-
+    BufferedImage BlackBishop;
+    BufferedImage BlackKing;
+    BufferedImage BlackKnight;
+    BufferedImage BlackPawn;
+    BufferedImage BlackQueen;
+    BufferedImage BlackRook;
+    BufferedImage WhiteBishop;
+    BufferedImage WhiteKing;
+    BufferedImage WhiteKnight;
+    BufferedImage WhitePawn;
+    BufferedImage WhiteQueen;
+    BufferedImage WhiteRook;
+    
     public BoardPanel() {
         addMouseListener(new MouseAdapter() {
             @Override
@@ -18,6 +33,23 @@ public class BoardPanel extends JPanel {
                 repaint();
             }
         });
+
+       try {   
+            BlackBishop = ImageIO.read(getClass().getResource("Images/BlackBishop.png"));
+            BlackKing = ImageIO.read(getClass().getResource("Images/BlackKing.png"));
+            BlackKnight  = ImageIO.read(getClass().getResource("Images/BlackKnight.png"));
+            BlackPawn = ImageIO.read(getClass().getResource("Images/BlackPawn.png"));
+            BlackQueen = ImageIO.read(getClass().getResource("Images/BlackQueen.png"));
+            BlackRook = ImageIO.read(getClass().getResource("Images/BlackRook.png"));
+            WhiteBishop = ImageIO.read(getClass().getResource("Images/WhiteBishop.png"));
+            WhiteKing = ImageIO.read(getClass().getResource("Images/WhiteKing.png"));
+            WhiteKnight = ImageIO.read(getClass().getResource("Images/WhiteKnight.png"));
+            WhitePawn = ImageIO.read(getClass().getResource("Images/WhitePawn.png"));
+            WhiteQueen = ImageIO.read(getClass().getResource("Images/WhiteQueen.png"));
+            WhiteRook = ImageIO.read(getClass().getResource("Images/WhiteRook.png"));
+       } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+       }
     }
 
     private boolean isValueInLimits(int point, int initialValue, int finalValue) {
@@ -81,8 +113,10 @@ public class BoardPanel extends JPanel {
                     drawer.setPaint(BoardColors.FOCUS);
 
                 drawer.fillRect(x, y, squareSize, squareSize);
+                drawer.drawImage(image, x, y, squareSize, squareSize, this);    
             }
         }
+
     }
 
 }
