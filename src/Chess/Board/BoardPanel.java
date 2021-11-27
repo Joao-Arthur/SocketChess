@@ -1,29 +1,15 @@
 package Board;
 
 import java.awt.*;
-import java.io.*;
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
 
 public class BoardPanel extends JPanel {
     Point currentClick;
     Point lastClick;
-    BufferedImage BlackBishop;
-    BufferedImage BlackKing;
-    BufferedImage BlackKnight;
-    BufferedImage BlackPawn;
-    BufferedImage BlackQueen;
-    BufferedImage BlackRook;
-    BufferedImage WhiteBishop;
-    BufferedImage WhiteKing;
-    BufferedImage WhiteKnight;
-    BufferedImage WhitePawn;
-    BufferedImage WhiteQueen;
-    BufferedImage WhiteRook;
-    BoardModel boardModel;
+    BoardImages boardImages;
+    ModelToView modelToView;
     
     public BoardPanel() {
         addMouseListener(new MouseAdapter() {
@@ -35,24 +21,8 @@ public class BoardPanel extends JPanel {
             }
         });
 
-       try {   
-            BlackBishop = ImageIO.read(getClass().getResource("Images/BlackBishop.png"));
-            BlackKing = ImageIO.read(getClass().getResource("Images/BlackKing.png"));
-            BlackKnight  = ImageIO.read(getClass().getResource("Images/BlackKnight.png"));
-            BlackPawn = ImageIO.read(getClass().getResource("Images/BlackPawn.png"));
-            BlackQueen = ImageIO.read(getClass().getResource("Images/BlackQueen.png"));
-            BlackRook = ImageIO.read(getClass().getResource("Images/BlackRook.png"));
-            WhiteBishop = ImageIO.read(getClass().getResource("Images/WhiteBishop.png"));
-            WhiteKing = ImageIO.read(getClass().getResource("Images/WhiteKing.png"));
-            WhiteKnight = ImageIO.read(getClass().getResource("Images/WhiteKnight.png"));
-            WhitePawn = ImageIO.read(getClass().getResource("Images/WhitePawn.png"));
-            WhiteQueen = ImageIO.read(getClass().getResource("Images/WhiteQueen.png"));
-            WhiteRook = ImageIO.read(getClass().getResource("Images/WhiteRook.png"));
-       } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-       }
-
-       boardModel = new BoardModel();
+       modelToView = new ModelToView();
+       boardImages = new BoardImages();
     }
 
     private boolean isValueInLimits(int point, int initialValue, int finalValue) {
@@ -63,17 +33,17 @@ public class BoardPanel extends JPanel {
         return isValueInLimits((int) value, dimension, dimension + size);
     }
 
-    private boolean isPointClicked(int x, int y, int size, Point point) {
-        return isPointInDimension(point.getX(), x, size) && isPointInDimension(point.getY(), y, size);
+    private boolean isPointClicked(int x, int y, int squareSize, Point point) {
+        return isPointInDimension(point.getX(), x, squareSize) && isPointInDimension(point.getY(), y, squareSize);
     }
 
-    private boolean isSquareClicked(int x, int y, int size) {
+    private boolean isSquareClicked(int x, int y, int squareSize) {
         if (currentClick == null)
             return false;
-        final var isCurrentClicked = isPointClicked(x, y, size, currentClick);
+        final var isCurrentClicked = isPointClicked(x, y, squareSize, currentClick);
         if (lastClick == null)
             return isCurrentClicked;
-        final var isLastClicked = isPointClicked(x, y, size, lastClick);
+        final var isLastClicked = isPointClicked(x, y, squareSize, lastClick);
         if (isLastClicked && isCurrentClicked) {
             currentClick = null;
             return false;
@@ -98,9 +68,9 @@ public class BoardPanel extends JPanel {
         final var squareSize = totalSize / 8;
 
         var darkSquare = true;
-        for (int boardWidthIndex = 0; boardWidthIndex < 8; boardWidthIndex++) {
+        for (int yIndex = 0; yIndex < 8; yIndex++) {
             darkSquare = !darkSquare;
-            for (int boardHeightIndex = 0; boardHeightIndex < 8; boardHeightIndex++) {
+            for (int xIndex = 0; xIndex < 8; xIndex++) {
                 if (darkSquare) {
                     drawer.setPaint(BoardColors.DARK);
                 } else {
@@ -109,73 +79,17 @@ public class BoardPanel extends JPanel {
 
                 darkSquare = !darkSquare;
 
-                final var x = paddingX + boardHeightIndex * squareSize;
-                final var y = paddingY + boardWidthIndex * squareSize;
+                final var x = paddingX + xIndex * squareSize;
+                final var y = paddingY + yIndex * squareSize;
 
                 if (isSquareClicked(x, y, squareSize))
                     drawer.setPaint(BoardColors.FOCUS);
 
-                drawer.fillRect(x, y, squareSize, squareSize);
-                
-                final var currentHouse = boardModel.getModelHouse(boardWidthIndex, boardHeightIndex);
-                if(currentHouse == null)continue;
+                drawer.fillRect(x, y, squareSize, squareSize);    
 
-                switch(currentHouse.piece.toString()) {
-                    case "KING": 
-                        switch(currentHouse.player.toString()) {
-                            case "WHITE":
-                                drawer.drawImage(WhiteKing, x, y, squareSize, squareSize, this);
-                        break;
-                            case "BLACK":
-                                drawer.drawImage(BlackKing, x, y, squareSize, squareSize, this);
-                        }
-                        break;
-                    case "QUEEN": 
-                      switch(currentHouse.player.toString()) {
-                          case "WHITE":
-                               drawer.drawImage(WhiteQueen, x, y, squareSize, squareSize, this);
-                      break;
-                          case "BLACK":
-                               drawer.drawImage(BlackQueen, x, y, squareSize, squareSize, this);
-                      }
-                      break;
-                    case "ROOK": 
-                      switch(currentHouse.player.toString()) {
-                          case "WHITE":
-                               drawer.drawImage(WhiteRook, x, y, squareSize, squareSize, this);
-                      break;
-                          case "BLACK":
-                               drawer.drawImage(BlackRook, x, y, squareSize, squareSize, this);
-                      }
-                      break;
-                    case "KNIGTH": 
-                      switch(currentHouse.player.toString()) {
-                          case "WHITE":
-                               drawer.drawImage(WhiteKnight, x, y, squareSize, squareSize, this);
-                      break;
-                          case "BLACK":
-                               drawer.drawImage(BlackKnight, x, y, squareSize, squareSize, this);
-                      }
-                      break;
-                    case "BISHOP": 
-                      switch(currentHouse.player.toString()) {
-                          case "WHITE":
-                               drawer.drawImage(WhiteBishop, x, y, squareSize, squareSize, this);
-                      break;
-                          case "BLACK":
-                               drawer.drawImage(BlackBishop, x, y, squareSize, squareSize, this);
-                      }
-                      break;
-                    case "PAWN": 
-                      switch(currentHouse.player.toString()) {
-                          case "WHITE":
-                               drawer.drawImage(WhitePawn, x, y, squareSize, squareSize, this);
-                      break;
-                          case "BLACK":
-                               drawer.drawImage(BlackPawn, x, y, squareSize, squareSize, this);
-                      }
-                      break;
-                }
+                final var imageToDraw = modelToView.getPieceImage(yIndex, xIndex);
+                if(imageToDraw != null)
+                    drawer.drawImage(imageToDraw, x, y, squareSize, squareSize, this);
             }
         }
     }

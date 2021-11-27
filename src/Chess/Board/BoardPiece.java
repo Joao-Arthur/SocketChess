@@ -5,7 +5,7 @@ public enum BoardPiece {
     KING("KING"),
     QUEEN("QUEEN"),
     ROOK("ROOK"),
-    KNIGTH("KNIGTH"),
+    KNIGHT("KNIGHT"),
     BISHOP("BISHOP"),
     PAWN("PAWN");
 
