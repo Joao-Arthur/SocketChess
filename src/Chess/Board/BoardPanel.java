@@ -5,11 +5,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.*;
 
-public class Board extends JPanel {
+public class BoardPanel extends JPanel {
     Point currentClick;
     Point lastClick;
 
-    public Board() {
+    public BoardPanel() {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {

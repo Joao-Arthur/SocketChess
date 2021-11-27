@@ -8,9 +8,4 @@ public class BoardHouse {
         this.piece = piece;
         this.player = player;
     }
-
-    @Override
-    public String toString() {
-        return player + "" + piece;
-    }
 }

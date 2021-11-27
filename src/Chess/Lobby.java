@@ -42,7 +42,11 @@ public class Lobby extends JFrame {
             { "João", new Date().toString(), "17636" },
             { "Pedro", new Date().toString(), "17636" }
         };
-        final String column[] = { "Nome do jogador", "Hora criação", "Porta" };
+        final String column[] = {
+            "Nome do jogador",
+            "Hora criação",
+            "Porta"
+        };
 
         final var matchesTable = new JTable();
         matchesTable.setModel(new DefaultTableModel(data, column) {

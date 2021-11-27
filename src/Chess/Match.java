@@ -1,13 +1,13 @@
 import java.awt.*;
 import javax.swing.*;
 
-import Board.Board;
+import Board.BoardPanel;
 
 public class Match {
     public Match() {
         final var matchScreen = createMatchScreen();
         matchScreen.add(createSidebar(), BorderLayout.EAST);
-        matchScreen.add(new Board());
+        matchScreen.add(new BoardPanel());
     }
 
     private JFrame createMatchScreen() {
