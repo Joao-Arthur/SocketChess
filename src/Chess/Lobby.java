@@ -35,9 +35,13 @@ public class Lobby extends JFrame {
     }
 
     private JTable createMatchesTable() {
-        final String data[][] = { { "João", new Date().toString(), "17636" },
-                { "Pedro", new Date().toString(), "17636" }, { "Marcos", new Date().toString(), "17636" },
-                { "João", new Date().toString(), "17636" }, { "Pedro", new Date().toString(), "17636" }, };
+        final String data[][] = {
+            { "João", new Date().toString(), "17636" },
+            { "Pedro", new Date().toString(), "17636" },
+            { "Marcos", new Date().toString(), "17636" },
+            { "João", new Date().toString(), "17636" },
+            { "Pedro", new Date().toString(), "17636" }
+        };
         final String column[] = { "Nome do jogador", "Hora criação", "Porta" };
 
         final var matchesTable = new JTable();

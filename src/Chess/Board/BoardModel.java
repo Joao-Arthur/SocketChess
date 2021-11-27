@@ -1,7 +1,5 @@
 package Board;
 
-import java.util.Arrays;
-
 public class BoardModel {
 	private BoardHouse[][] board = { { new BoardHouse(BoardPiece.ROOK, BoardPlayer.BLACK),
 			new BoardHouse(BoardPiece.KNIGTH, BoardPlayer.BLACK), new BoardHouse(BoardPiece.BISHOP, BoardPlayer.BLACK),
@@ -64,9 +62,5 @@ public class BoardModel {
 		if (to == null)
 			return;
 
-	}
-
-	public String toString() {
-		return Arrays.deepToString(board);
 	}
 }

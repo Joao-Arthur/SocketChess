@@ -8,25 +8,4 @@ public enum BoardPiece {
     BoardPiece(final String name) {
         this.name = name;
     }
-
-    public String toString() {
-        switch (this) {
-        case NONE:
-            return " ";
-        case KING:
-            return "K";
-        case QUEEN:
-            return "Q";
-        case ROOK:
-            return "R";
-        case KNIGTH:
-            return "N";
-        case BISHOP:
-            return "B";
-        case PAWN:
-            return "P";
-        default:
-            return "-";
-        }
-    }
 }
