@@ -84,4 +84,10 @@ public class BoardModel {
             return;
 
     }
+
+    public BoardHouse getModelHouse(int i, int j) {
+  //      if (i > board.length) return null;
+  //      if (j > board[i].length)return null;
+        return board[i][j];
+    }
 }

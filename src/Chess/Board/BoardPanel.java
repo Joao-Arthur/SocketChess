@@ -23,6 +23,7 @@ public class BoardPanel extends JPanel {
     BufferedImage WhitePawn;
     BufferedImage WhiteQueen;
     BufferedImage WhiteRook;
+    BoardModel boardModel;
     
     public BoardPanel() {
         addMouseListener(new MouseAdapter() {
@@ -50,6 +51,8 @@ public class BoardPanel extends JPanel {
        } catch (IOException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
        }
+
+       boardModel = new BoardModel();
     }
 
     private boolean isValueInLimits(int point, int initialValue, int finalValue) {
@@ -113,10 +116,67 @@ public class BoardPanel extends JPanel {
                     drawer.setPaint(BoardColors.FOCUS);
 
                 drawer.fillRect(x, y, squareSize, squareSize);
-                drawer.drawImage(image, x, y, squareSize, squareSize, this);    
+                
+                final var currentHouse = boardModel.getModelHouse(boardWidthIndex, boardHeightIndex);
+                if(currentHouse == null)continue;
+
+                switch(currentHouse.piece.toString()) {
+                    case "KING": 
+                        switch(currentHouse.player.toString()) {
+                            case "WHITE":
+                                drawer.drawImage(WhiteKing, x, y, squareSize, squareSize, this);
+                        break;
+                            case "BLACK":
+                                drawer.drawImage(BlackKing, x, y, squareSize, squareSize, this);
+                        }
+                        break;
+                    case "QUEEN": 
+                      switch(currentHouse.player.toString()) {
+                          case "WHITE":
+                               drawer.drawImage(WhiteQueen, x, y, squareSize, squareSize, this);
+                      break;
+                          case "BLACK":
+                               drawer.drawImage(BlackQueen, x, y, squareSize, squareSize, this);
+                      }
+                      break;
+                    case "ROOK": 
+                      switch(currentHouse.player.toString()) {
+                          case "WHITE":
+                               drawer.drawImage(WhiteRook, x, y, squareSize, squareSize, this);
+                      break;
+                          case "BLACK":
+                               drawer.drawImage(BlackRook, x, y, squareSize, squareSize, this);
+                      }
+                      break;
+                    case "KNIGTH": 
+                      switch(currentHouse.player.toString()) {
+                          case "WHITE":
+                               drawer.drawImage(WhiteKnight, x, y, squareSize, squareSize, this);
+                      break;
+                          case "BLACK":
+                               drawer.drawImage(BlackKnight, x, y, squareSize, squareSize, this);
+                      }
+                      break;
+                    case "BISHOP": 
+                      switch(currentHouse.player.toString()) {
+                          case "WHITE":
+                               drawer.drawImage(WhiteBishop, x, y, squareSize, squareSize, this);
+                      break;
+                          case "BLACK":
+                               drawer.drawImage(BlackBishop, x, y, squareSize, squareSize, this);
+                      }
+                      break;
+                    case "PAWN": 
+                      switch(currentHouse.player.toString()) {
+                          case "WHITE":
+                               drawer.drawImage(WhitePawn, x, y, squareSize, squareSize, this);
+                      break;
+                          case "BLACK":
+                               drawer.drawImage(BlackPawn, x, y, squareSize, squareSize, this);
+                      }
+                      break;
+                }
             }
         }
-
     }
-
 }
