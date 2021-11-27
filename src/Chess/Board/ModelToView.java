@@ -22,9 +22,6 @@ public class ModelToView {
     }
 
     public void movePiece(Point from, Point to) {
-        final var fromHouse = boardModel.getModelHouse((int) from.getX(), (int) from.getY());
-        final var toHouse = boardModel.getModelHouse((int) to.getX(), (int) to.getY());
-        System.out.println(fromHouse + " -> " + toHouse);
-
+        boardModel.movePiece(from, to);
     }
 }

@@ -48,7 +48,14 @@ public class BoardPanel extends JPanel {
         final var to = new Point(currentXClicked, currentYClicked);
         if (from.equals(to))
             return;
-        modelToView.movePiece(from, to);
+        try {
+            modelToView.movePiece(from, to);
+            currentClick = null;
+            lastClick = null;
+
+        } catch (RuntimeException e) {
+        }
+
     }
 
     private boolean isPointClicked(int x, int y, Point point) {
