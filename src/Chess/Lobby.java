@@ -1,21 +1,26 @@
-import java.awt.*;
-import java.util.Date;
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import Socket.SocketService;
+
+import javax.swing.JButton;
+import javax.swing.BoxLayout;
+import javax.swing.Box;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Lobby extends JFrame {
 
     public Lobby() {
         final var lobbyScreen = createLobbyScreen();
-        lobbyScreen.add(createSidebar(), BorderLayout.EAST);
-        lobbyScreen.add(createMatchesTable());
+        lobbyScreen.add(createSidebar());
     }
 
     private JFrame createLobbyScreen() {
         final var lobbyScreen = new JFrame();
         lobbyScreen.setVisible(true);
-        lobbyScreen.setSize(1366, 768);
-        lobbyScreen.setTitle("Lobby | Socket Chess");
+        lobbyScreen.setSize(500, 300);
+        lobbyScreen.setTitle("Socket Chess");
         lobbyScreen.setLocationRelativeTo(null);
         lobbyScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         return lobbyScreen;
@@ -23,42 +28,36 @@ public class Lobby extends JFrame {
 
     private JPanel createSidebar() {
         final var sidebar = new JPanel();
-        sidebar.add(createSidebarButton("criar partida"));
-        sidebar.add(createSidebarButton("conectar à partida"));
+        sidebar.setLayout(new BoxLayout(sidebar, BoxLayout.LINE_AXIS));
+        sidebar.add(Box.createVerticalGlue());
+        sidebar.add(Box.createHorizontalGlue());
+        final var createMatchButton = createSidebarButton("criar partida");
+        createMatchButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                SocketService.getInstance().createServer();
+            }
+        });
+        sidebar.add(createMatchButton);
+        sidebar.add(Box.createVerticalGlue());
+        sidebar.add(Box.createHorizontalGlue());
+        final var connectToMatchButton = createSidebarButton("conectar à partida");
+        connectToMatchButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                SocketService.getInstance().createClient();
+                SocketService.getInstance().send("S");
+            }
+        });
+        sidebar.add(connectToMatchButton);
+        sidebar.add(Box.createVerticalGlue());
+        sidebar.add(Box.createHorizontalGlue());
         return sidebar;
     }
 
     private JButton createSidebarButton(String title) {
         final var sidebarButton = new JButton(title);
-        sidebarButton.setSize(200, 30);
+        sidebarButton.setSize(300, 30);
         return sidebarButton;
-    }
-
-    private JTable createMatchesTable() {
-        final String data[][] = {
-                { "João", new Date().toString(), "17636" },
-                { "Pedro", new Date().toString(), "17636" },
-                { "Marcos", new Date().toString(), "17636" },
-                { "João", new Date().toString(), "17636" },
-                { "Pedro", new Date().toString(), "17636" }
-        };
-        final String column[] = {
-                "Nome do jogador",
-                "Hora criação",
-                "Porta"
-        };
-
-        final var matchesTable = new JTable();
-        matchesTable.setModel(new DefaultTableModel(data, column) {
-            @Override
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return false;
-            }
-        });
-        matchesTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        matchesTable.setAutoCreateRowSorter(true);
-        matchesTable.getTableHeader().setReorderingAllowed(false);
-        matchesTable.setVerifyInputWhenFocusTarget(false);
-        return matchesTable;
     }
 }
