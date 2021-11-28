@@ -90,7 +90,56 @@ public class BoardModel {
             return;
         if (fromHouse.player == BoardPlayer.NONE)
             return;
-        System.out.println(fromHouse);
+        if (fromHouse.player == toHouse.player)
+            return;
+
+        final var distanceX = (int) from.getX() - (int) to.getX();
+        final var deltaX = Math.abs(distanceX);
+        final var distanceY = (int) from.getY() - (int) to.getY();
+        final var deltaY = Math.abs(distanceY);
+
+        switch (fromHouse.piece.toString()) {
+            case "PAWN":
+                if (deltaX > 1)
+                return;
+                if ((deltaX == 1 && toHouse.piece == BoardPiece.NONE))
+                return;
+                if (deltaY > 2)
+                    return;
+                if (fromHouse.player == BoardPlayer.WHITE) {
+                    if (deltaY == 2 && (int) from.getY() != 6)
+                        return;
+                    if (distanceY != 1)
+                        return;
+                }
+                if (fromHouse.player == BoardPlayer.BLACK) {
+                    if (deltaY == 2 && (int) from.getY() != 1)
+                        return;
+                    if (distanceY != -1)
+                        return;
+                }
+                break;
+            case "ROOK":
+                if (deltaX > 0 && deltaY > 0)
+                    return;
+                break;
+            case "BISHOP":
+                if (deltaX != deltaY)
+                    return;
+                break;
+            case "KNIGHT":
+                if ((deltaY != 2 || deltaX != 1) && (deltaX != 2 || deltaY != 1))
+                    return;
+                break;
+            case "KING":
+                if (deltaX > 1 || deltaY > 1)
+                    return;
+                break;
+            case "QUEEN":
+                if ((deltaX > 0 && deltaY > 0) && (deltaX != deltaY))
+                return;
+                break;
+        }
         update(from, to);
     }
 
