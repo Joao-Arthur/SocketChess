@@ -22,14 +22,14 @@ public class SocketServer {
                     try {
                         Scanner input = new Scanner(client.getInputStream());
                         handleInput(input.nextLine());
-                    } catch (IOException ex) {
-                        Logger.getLogger(SocketServer.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException exception) {
+                        Logger.getLogger(SocketServer.class.getName()).log(Level.SEVERE, null, exception);
                     }
                 }
                 // server.close();
             }).start();
-        } catch (IOException ex) {
-            Logger.getLogger(SocketServer.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException exception) {
+            Logger.getLogger(SocketServer.class.getName()).log(Level.SEVERE, null, exception);
         }
     }
 

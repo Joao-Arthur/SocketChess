@@ -6,7 +6,7 @@ public class BoardHouse {
     public final PieceEnum piece;
     public final BoardPlayer player;
 
-    public BoardHouse(PieceEnum piece, BoardPlayer player) {
+    public BoardHouse(BoardPlayer player, PieceEnum piece) {
         this.piece = piece;
         this.player = player;
     }

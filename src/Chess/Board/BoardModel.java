@@ -7,77 +7,84 @@ import Board.Piece.PieceEnum;
 public class BoardModel {
     private BoardHouse[][] board = {
             {
-                    new BoardHouse(BoardPiece.ROOK, BoardPlayer.BLACK),
-                    new BoardHouse(BoardPiece.KNIGHT, BoardPlayer.BLACK),
-                    new BoardHouse(BoardPiece.BISHOP, BoardPlayer.BLACK),
-                    new BoardHouse(BoardPiece.KING, BoardPlayer.BLACK),
-                    new BoardHouse(BoardPiece.QUEEN, BoardPlayer.BLACK),
-                    new BoardHouse(BoardPiece.BISHOP, BoardPlayer.BLACK),
-                    new BoardHouse(BoardPiece.KNIGHT, BoardPlayer.BLACK),
-                    new BoardHouse(BoardPiece.ROOK, BoardPlayer.BLACK)
-        }, {
-                    new BoardHouse(BoardPiece.PAWN, BoardPlayer.BLACK),
-                    new BoardHouse(BoardPiece.PAWN, BoardPlayer.BLACK),
-                    new BoardHouse(BoardPiece.PAWN, BoardPlayer.BLACK),
-                    new BoardHouse(BoardPiece.PAWN, BoardPlayer.BLACK),
-                    new BoardHouse(BoardPiece.PAWN, BoardPlayer.BLACK),
-                    new BoardHouse(BoardPiece.PAWN, BoardPlayer.BLACK),
-                    new BoardHouse(BoardPiece.PAWN, BoardPlayer.BLACK),
-                    new BoardHouse(BoardPiece.PAWN, BoardPlayer.BLACK)
-        },{
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE)
-        }, {
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE)
-        }, {
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE)
-        }, {
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE),
-                    new BoardHouse(BoardPiece.NONE, BoardPlayer.NONE)
-        }, {
-                    new BoardHouse(BoardPiece.PAWN, BoardPlayer.WHITE),
-                    new BoardHouse(BoardPiece.PAWN, BoardPlayer.WHITE),
-                    new BoardHouse(BoardPiece.PAWN, BoardPlayer.WHITE),
-                    new BoardHouse(BoardPiece.PAWN, BoardPlayer.WHITE),
-                    new BoardHouse(BoardPiece.PAWN, BoardPlayer.WHITE),
-                    new BoardHouse(BoardPiece.PAWN, BoardPlayer.WHITE),
-                    new BoardHouse(BoardPiece.PAWN, BoardPlayer.WHITE),
-                    new BoardHouse(BoardPiece.PAWN, BoardPlayer.WHITE)
-        }, {
-                    new BoardHouse(BoardPiece.ROOK, BoardPlayer.WHITE),
-                    new BoardHouse(BoardPiece.KNIGHT, BoardPlayer.WHITE),
-                    new BoardHouse(BoardPiece.BISHOP, BoardPlayer.WHITE),
-                    new BoardHouse(BoardPiece.KING, BoardPlayer.WHITE),
-                    new BoardHouse(BoardPiece.QUEEN, BoardPlayer.WHITE),
-                    new BoardHouse(BoardPiece.BISHOP, BoardPlayer.WHITE),
-                    new BoardHouse(BoardPiece.KNIGHT, BoardPlayer.WHITE),
-                    new BoardHouse(BoardPiece.ROOK, BoardPlayer.WHITE)
+                    new BoardHouse(BoardPlayer.BLACK, PieceEnum.ROOK),
+                    new BoardHouse(BoardPlayer.BLACK, PieceEnum.KNIGHT),
+                    new BoardHouse(BoardPlayer.BLACK, PieceEnum.BISHOP),
+                    new BoardHouse(BoardPlayer.BLACK, PieceEnum.KING),
+                    new BoardHouse(BoardPlayer.BLACK, PieceEnum.QUEEN),
+                    new BoardHouse(BoardPlayer.BLACK, PieceEnum.BISHOP),
+                    new BoardHouse(BoardPlayer.BLACK, PieceEnum.KNIGHT),
+                    new BoardHouse(BoardPlayer.BLACK, PieceEnum.ROOK)
+            },
+            {
+                    new BoardHouse(BoardPlayer.BLACK, PieceEnum.PAWN),
+                    new BoardHouse(BoardPlayer.BLACK, PieceEnum.PAWN),
+                    new BoardHouse(BoardPlayer.BLACK, PieceEnum.PAWN),
+                    new BoardHouse(BoardPlayer.BLACK, PieceEnum.PAWN),
+                    new BoardHouse(BoardPlayer.BLACK, PieceEnum.PAWN),
+                    new BoardHouse(BoardPlayer.BLACK, PieceEnum.PAWN),
+                    new BoardHouse(BoardPlayer.BLACK, PieceEnum.PAWN),
+                    new BoardHouse(BoardPlayer.BLACK, PieceEnum.PAWN)
+            },
+            {
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE)
+            },
+            {
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE)
+            },
+            {
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE)
+            },
+            {
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE),
+                    new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE)
+            },
+            {
+                    new BoardHouse(BoardPlayer.WHITE, PieceEnum.PAWN),
+                    new BoardHouse(BoardPlayer.WHITE, PieceEnum.PAWN),
+                    new BoardHouse(BoardPlayer.WHITE, PieceEnum.PAWN),
+                    new BoardHouse(BoardPlayer.WHITE, PieceEnum.PAWN),
+                    new BoardHouse(BoardPlayer.WHITE, PieceEnum.PAWN),
+                    new BoardHouse(BoardPlayer.WHITE, PieceEnum.PAWN),
+                    new BoardHouse(BoardPlayer.WHITE, PieceEnum.PAWN),
+                    new BoardHouse(BoardPlayer.WHITE, PieceEnum.PAWN)
+            },
+            {
+                    new BoardHouse(BoardPlayer.WHITE, PieceEnum.ROOK),
+                    new BoardHouse(BoardPlayer.WHITE, PieceEnum.KNIGHT),
+                    new BoardHouse(BoardPlayer.WHITE, PieceEnum.BISHOP),
+                    new BoardHouse(BoardPlayer.WHITE, PieceEnum.KING),
+                    new BoardHouse(BoardPlayer.WHITE, PieceEnum.QUEEN),
+                    new BoardHouse(BoardPlayer.WHITE, PieceEnum.BISHOP),
+                    new BoardHouse(BoardPlayer.WHITE, PieceEnum.KNIGHT),
+                    new BoardHouse(BoardPlayer.WHITE, PieceEnum.ROOK)
             }
     };
 
@@ -105,9 +112,9 @@ public class BoardModel {
                 return;
             case PAWN:
                 if (deltaX > 1)
-                return;
+                    return;
                 if ((deltaX == 1 && toHouse.piece == PieceEnum.NONE))
-                return;
+                    return;
                 if (deltaY > 2)
                     return;
                 if (fromHouse.player == BoardPlayer.WHITE) {
@@ -141,7 +148,7 @@ public class BoardModel {
                 break;
             case QUEEN:
                 if ((deltaX > 0 && deltaY > 0) && (deltaX != deltaY))
-                return;
+                    return;
                 break;
         }
         update(from, to);
@@ -157,6 +164,6 @@ public class BoardModel {
 
     private void update(Point from, Point to) {
         board[(int) to.getY()][(int) to.getX()] = getModelHouse(from);
-        board[(int) from.getY()][(int) from.getX()] = new BoardHouse(PieceEnum.NONE, BoardPlayer.NONE);
+        board[(int) from.getY()][(int) from.getX()] = new BoardHouse(BoardPlayer.NONE, PieceEnum.NONE);
     }
 }

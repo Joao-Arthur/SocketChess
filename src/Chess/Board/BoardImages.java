@@ -26,10 +26,10 @@ public class BoardImages {
     }
 
     private void loadImages() {
-        try {   
+        try {
             blackBishop = loadImage("BlackBishop");
             blackKing = loadImage("BlackKing");
-            blackKnight  = loadImage("BlackKnight");
+            blackKnight = loadImage("BlackKnight");
             blackPawn = loadImage("BlackPawn");
             blackQueen = loadImage("BlackQueen");
             blackRook = loadImage("BlackRook");
@@ -39,11 +39,13 @@ public class BoardImages {
             whitePawn = loadImage("WhitePawn");
             whiteQueen = loadImage("WhiteQueen");
             whiteRook = loadImage("WhiteRook");
-        } catch (IOException e) { }
+        } catch (IOException e) {
+        }
     }
 
     private BufferedImage loadImage(String name) throws IOException {
-        return ImageIO.read(getClass().getResource("Images/" + name + ".png"));
+        return ImageIO.read(
+                getClass().getResource(new StringBuilder().append("Images/").append(name).append(".png").toString()));
     }
 
     private void loadImagesMap() {
