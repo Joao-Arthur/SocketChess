@@ -1,8 +1,5 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import Socket.SocketService;
-
 import javax.swing.JButton;
 import javax.swing.BoxLayout;
 import javax.swing.Box;
@@ -11,10 +8,12 @@ import java.awt.event.MouseEvent;
 
 public class Lobby {
     private final JFrame lobbyScreen;
+    private final NewMatchService newMatchService;
 
     public Lobby() {
         lobbyScreen = createLobbyScreen();
         lobbyScreen.add(createSidebar());
+        newMatchService = new NewMatchService();
     }
 
     private JFrame createLobbyScreen() {
@@ -36,9 +35,7 @@ public class Lobby {
         createMatchButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                SocketService.getInstance().createServer().setManager(new LobbySocketManager()).send("S");
-
-                // WindowManager.getInstance().goToMatch();
+                newMatchService.createServerForMatch();
             }
         });
         sidebar.add(createMatchButton);
@@ -48,8 +45,7 @@ public class Lobby {
         connectToMatchButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                SocketService.getInstance().createClient().setManager(new LobbySocketManager()).send("S");
-                // WindowManager.getInstance().goToMatch();
+                newMatchService.createClientForMatch();
             }
         });
         sidebar.add(connectToMatchButton);
