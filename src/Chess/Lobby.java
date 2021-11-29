@@ -3,6 +3,7 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.BoxLayout;
 import javax.swing.Box;
+import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -56,7 +57,11 @@ public class Lobby {
 
     private JButton createSidebarButton(String title) {
         final var sidebarButton = new JButton(title);
-        sidebarButton.setSize(300, 30);
+        final var size = new Dimension(150, 30);
+        //sidebarButton.setMinimumSize(size);
+        //sidebarButton.setSize(size);
+        //sidebarButton.setMaximumSize(size);
+        sidebarButton.setPreferredSize(size);
         return sidebarButton;
     }
 

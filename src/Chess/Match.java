@@ -30,7 +30,11 @@ public class Match {
 
     private JButton createSidebarButton(String title) {
         final var sidebarButton = new JButton(title);
-        sidebarButton.setSize(200, 30);
+        final var size = new Dimension(200, 30);
+        //sidebarButton.setMinimumSize(size);
+        //sidebarButton.setSize(size);
+        //sidebarButton.setMaximumSize(size);
+        sidebarButton.setPreferredSize(size);
         return sidebarButton;
     }
 
