@@ -1,6 +1,6 @@
-package Board;
+package Board.Piece;
 
-public enum BoardPiece {
+public enum PieceEnum {
     NONE("NONE"),
     KING("KING"),
     QUEEN("QUEEN"),
@@ -11,7 +11,7 @@ public enum BoardPiece {
 
     public final String name;
 
-    BoardPiece(final String name) {
+    PieceEnum(final String name) {
         this.name = name;
     }
 

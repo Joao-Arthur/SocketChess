@@ -1,5 +1,5 @@
 package Board;
 
 public interface PieceService {
-    public void movePieces();
+    public void movePiece();
 }
