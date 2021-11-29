@@ -5,30 +5,53 @@ import java.io.PrintStream;
 import java.io.InputStream;
 import java.net.Socket;
 import java.net.ConnectException;
+import java.net.ServerSocket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class SocketClient {
-    InputStream servidor;
-    Socket client;
     PrintStream output;
+    SocketManager manager;
 
     public SocketClient() {
-        // new Thread(() -> {
         try {
-            client = new Socket("localhost", SocketService.PORT);
+            Socket client = new Socket("localhost", SocketService.PORT);
             output = new PrintStream(client.getOutputStream());
+            new Thread(() -> {
+                while (true) {
+                    try {
+                        Scanner input = new Scanner(client.getInputStream());
+                        handleInput(input.nextLine());
+                    } catch (IOException ex) {
+                        Logger.getLogger(SocketServer.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                // client.close();
+            }).start();
         } catch (ConnectException exception) {
             JOptionPane.showMessageDialog(null, exception.getMessage());
         } catch (IOException exception) {
             Logger.getLogger(SocketClient.class.getName()).log(Level.SEVERE, null, exception);
         }
-        // }).start();
+    }
+
+    public void setManager(SocketManager manager) {
+        this.manager = manager;
+    }
+
+    private void handleInput(String message) {
+        if (message == null)
+            return;
+        if (message.equals(""))
+            return;
+        if (manager == null)
+            return;
+        manager.handleMessage(message);
     }
 
     public void send(String message) {
-        System.out.println(output);
         if (output != null)
             output.println(message);
     }

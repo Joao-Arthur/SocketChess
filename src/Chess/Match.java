@@ -4,8 +4,10 @@ import javax.swing.*;
 import Board.BoardPanel;
 
 public class Match {
+    private final JFrame matchScreen;
+
     public Match() {
-        final var matchScreen = createMatchScreen();
+        matchScreen = createMatchScreen();
         matchScreen.add(createSidebar(), BorderLayout.EAST);
         matchScreen.add(new BoardPanel());
     }
@@ -30,5 +32,9 @@ public class Match {
         final var sidebarButton = new JButton(title);
         sidebarButton.setSize(200, 30);
         return sidebarButton;
+    }
+
+    public void dispose() {
+        matchScreen.dispose();
     }
 }

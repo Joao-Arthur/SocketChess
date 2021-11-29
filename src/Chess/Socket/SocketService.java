@@ -1,5 +1,6 @@
 package Socket;
 
+//transformar em interface e factory
 public class SocketService {
     private static SocketService instance;
     static final int PORT = 54321;
@@ -12,18 +13,27 @@ public class SocketService {
         return instance;
     }
 
-    public SocketServer createServer() {
+    public SocketService createServer() {
         server = new SocketServer();
-        return server;
+        return this;
     }
 
-    public SocketClient createClient() {
+    public SocketService createClient() {
         client = new SocketClient();
-        return client;
+        return this;
     }
 
     public void send(String message) {
-        System.out.println(message);
-        client.send(message);
+        if (server != null)
+            server.send(message);
+        if (client != null)
+            client.send(message);
+    }
+
+    public void setManager(SocketManager manager) {
+        if (server != null)
+            server.setManager(manager);
+        if (client != null)
+            client.setManager(manager);
     }
 }

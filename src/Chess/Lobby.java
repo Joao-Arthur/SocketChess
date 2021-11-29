@@ -9,10 +9,11 @@ import javax.swing.Box;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Lobby extends JFrame {
+public class Lobby {
+    private final JFrame lobbyScreen;
 
     public Lobby() {
-        final var lobbyScreen = createLobbyScreen();
+        lobbyScreen = createLobbyScreen();
         lobbyScreen.add(createSidebar());
     }
 
@@ -35,7 +36,9 @@ public class Lobby extends JFrame {
         createMatchButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                SocketService.getInstance().createServer();
+                SocketService.getInstance().createServer().setManager(new LobbySocketManager());
+
+                // WindowManager.getInstance().goToMatch();
             }
         });
         sidebar.add(createMatchButton);
@@ -45,8 +48,9 @@ public class Lobby extends JFrame {
         connectToMatchButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                SocketService.getInstance().createClient();
+                SocketService.getInstance().createClient().setManager(new LobbySocketManager());
                 SocketService.getInstance().send("S");
+                // WindowManager.getInstance().goToMatch();
             }
         });
         sidebar.add(connectToMatchButton);
@@ -59,5 +63,9 @@ public class Lobby extends JFrame {
         final var sidebarButton = new JButton(title);
         sidebarButton.setSize(300, 30);
         return sidebarButton;
+    }
+
+    public void dispose() {
+        lobbyScreen.dispose();
     }
 }
