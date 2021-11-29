@@ -36,7 +36,7 @@ public class Lobby {
         createMatchButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                SocketService.getInstance().createServer().setManager(new LobbySocketManager());
+                SocketService.getInstance().createServer().setManager(new LobbySocketManager()).send("S");
 
                 // WindowManager.getInstance().goToMatch();
             }
@@ -48,8 +48,7 @@ public class Lobby {
         connectToMatchButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                SocketService.getInstance().createClient().setManager(new LobbySocketManager());
-                SocketService.getInstance().send("S");
+                SocketService.getInstance().createClient().setManager(new LobbySocketManager()).send("S");
                 // WindowManager.getInstance().goToMatch();
             }
         });

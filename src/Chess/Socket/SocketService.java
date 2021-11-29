@@ -23,17 +23,19 @@ public class SocketService {
         return this;
     }
 
-    public void send(String message) {
+    public SocketService send(String message) {
         if (server != null)
             server.send(message);
         if (client != null)
             client.send(message);
+        return this;
     }
 
-    public void setManager(SocketManager manager) {
+    public SocketService setManager(SocketManager manager) {
         if (server != null)
             server.setManager(manager);
         if (client != null)
             client.setManager(manager);
+        return this;
     }
 }
