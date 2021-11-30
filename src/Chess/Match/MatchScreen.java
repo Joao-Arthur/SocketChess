@@ -1,15 +1,20 @@
 package Chess.Match;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Dimension;
+import java.awt.BorderLayout;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JButton;
 
 public class MatchScreen {
     private final JFrame matchScreen;
+    private final MatchService matchService;
 
     public MatchScreen() {
         matchScreen = createMatchScreen();
         matchScreen.add(createSidebar(), BorderLayout.EAST);
-        matchScreen.add(new BoardPanel());
+        matchService = new MatchService();
+        matchScreen.add(new BoardPanel(matchService));
     }
 
     private JFrame createMatchScreen() {

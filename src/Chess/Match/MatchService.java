@@ -1,5 +1,13 @@
 package Chess.Match;
 
-public class MatchService {
+import Chess.Socket.SocketInterface;
 
+public class MatchService {
+    public void giveUp() {
+
+    }
+
+    public void movePiece() {
+
+    }
 }

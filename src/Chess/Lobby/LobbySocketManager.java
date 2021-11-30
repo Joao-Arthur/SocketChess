@@ -1,16 +1,14 @@
 package Chess.Lobby;
 
-import Chess.Socket.SocketManager;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import Chess.Socket.SocketManager;
 import Chess.WindowManager;
 
 final class LobbySocketManager implements SocketManager {
     public void handleMessage(String message) {
         switch (message) {
-            case LobbyService.CREATE_MATCH_MESSAGE:
+            case LobbyMessages.NEW_MATCH_MESSAGE:
                 WindowManager.getInstance().goToMatch();
                 break;
             default:

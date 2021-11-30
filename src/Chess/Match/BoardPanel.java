@@ -10,12 +10,14 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class BoardPanel extends JPanel {
+    private final MatchService matchService;
     Point currentClick;
     Point lastClick;
     BoardImages boardImages;
     ModelToView modelToView;
 
-    public BoardPanel() {
+    public BoardPanel(MatchService matchService) {
+        this.matchService = matchService;
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -48,14 +50,9 @@ public class BoardPanel extends JPanel {
         final var to = new Point(currentXClicked, currentYClicked);
         if (from.equals(to))
             return;
-        try {
-            modelToView.movePiece(from, to);
-            currentClick = null;
-            lastClick = null;
-
-        } catch (RuntimeException e) {
-        }
-
+        modelToView.movePiece(from, to);
+        currentClick = null;
+        lastClick = null;
     }
 
     private boolean isPointClicked(int x, int y, Point point) {
