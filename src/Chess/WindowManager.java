@@ -1,12 +1,12 @@
 package Chess;
 
 import Chess.Lobby.LobbyScreen;
-import Chess.Match.Match;
+import Chess.Match.MatchScreen;
 
 public class WindowManager {
     private static WindowManager instance;
     private LobbyScreen lobbyScreen;
-    private Match matchScreen;
+    private MatchScreen matchScreen;
 
     public static WindowManager getInstance() {
         if (instance == null)
@@ -27,6 +27,6 @@ public class WindowManager {
             lobbyScreen.dispose();
             lobbyScreen = null;
         }
-        matchScreen = new Match();
+        matchScreen = new MatchScreen();
     }
 }

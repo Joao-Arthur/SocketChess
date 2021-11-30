@@ -5,10 +5,10 @@ import javax.swing.*;
 
 import Chess.Board.BoardPanel;
 
-public class Match {
+public class MatchScreen {
     private final JFrame matchScreen;
 
-    public Match() {
+    public MatchScreen() {
         matchScreen = createMatchScreen();
         matchScreen.add(createSidebar(), BorderLayout.EAST);
         matchScreen.add(new BoardPanel());
