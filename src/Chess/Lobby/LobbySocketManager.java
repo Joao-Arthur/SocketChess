@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 import Chess.WindowManager;
 
-public class LobbySocketManager implements SocketManager {
+final class LobbySocketManager implements SocketManager {
     public void handleMessage(String message) {
         switch (message) {
             case LobbyService.CREATE_MATCH_MESSAGE:

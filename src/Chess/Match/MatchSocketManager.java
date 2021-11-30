@@ -5,7 +5,7 @@ import Chess.Socket.SocketManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MatchSocketManager implements SocketManager {
+final class MatchSocketManager implements SocketManager {
     public void handleMessage(String message) {
         switch (message) {
             case "temp":

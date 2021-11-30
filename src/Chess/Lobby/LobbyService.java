@@ -2,7 +2,7 @@ package Chess.Lobby;
 
 import Chess.Socket.SocketService;
 
-public class LobbyService {
+final class LobbyService {
     public static final String CREATE_MATCH_MESSAGE = "NEW_MATCH";
 
     public void createServerForMatch() {
