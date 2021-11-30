@@ -1,4 +1,4 @@
-package Chess.Board;
+package Chess.Match;
 
 import Chess.Board.Piece.PieceEnum;
 import Chess.Board.Player.PlayerEnum;

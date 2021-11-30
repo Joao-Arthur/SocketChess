@@ -3,8 +3,6 @@ package Chess.Match;
 import java.awt.*;
 import javax.swing.*;
 
-import Chess.Board.BoardPanel;
-
 public class MatchScreen {
     private final JFrame matchScreen;
 
@@ -17,7 +15,7 @@ public class MatchScreen {
     private JFrame createMatchScreen() {
         final var matchScreen = new JFrame();
         matchScreen.setVisible(true);
-        matchScreen.setSize(1366, 768);
+        matchScreen.setSize(1000, 768);
         matchScreen.setTitle("Match | Socket Chess");
         matchScreen.setLocationRelativeTo(null);
         matchScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

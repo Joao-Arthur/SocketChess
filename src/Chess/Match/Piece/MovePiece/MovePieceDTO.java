@@ -1,7 +1,8 @@
 package Chess.Board.Piece.MovePiece;
 
-import Chess.Board.BoardHouse;
 import java.awt.Point;
+
+import Chess.Match.BoardHouse;
 
 public class MovePieceDTO {
     public final Point from;

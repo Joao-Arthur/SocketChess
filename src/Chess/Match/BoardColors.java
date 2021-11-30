@@ -1,4 +1,4 @@
-package Chess.Board;
+package Chess.Match;
 
 import java.awt.Color;
 
