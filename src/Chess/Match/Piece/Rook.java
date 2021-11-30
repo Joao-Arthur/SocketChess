@@ -1,8 +1,8 @@
-package Chess.Board.Piece;
+package Chess.Match.Piece;
 
-import Chess.Board.Piece.MovePiece.MovePieceService;
-import Chess.Board.Piece.MovePiece.MovePieceDTO;
-import Chess.Board.Piece.MovePiece.InvalidMovementException;
+import Chess.Match.Piece.MovePiece.MovePieceService;
+import Chess.Match.Piece.MovePiece.MovePieceDTO;
+import Chess.Match.Piece.MovePiece.InvalidMovementException;
 
 public class Rook implements PieceInterface {
     public void movePiece(MovePieceDTO movePieceDTO) {

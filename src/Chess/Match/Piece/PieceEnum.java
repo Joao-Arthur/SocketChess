@@ -1,4 +1,4 @@
-package Chess.Board.Piece;
+package Chess.Match.Piece;
 
 public enum PieceEnum {
     NONE("NONE"),

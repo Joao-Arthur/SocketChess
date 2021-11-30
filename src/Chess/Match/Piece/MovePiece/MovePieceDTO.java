@@ -1,4 +1,4 @@
-package Chess.Board.Piece.MovePiece;
+package Chess.Match.Piece.MovePiece;
 
 import java.awt.Point;
 

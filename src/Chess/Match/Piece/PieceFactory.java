@@ -1,4 +1,4 @@
-package Chess.Board.Piece;
+package Chess.Match.Piece;
 
 public interface PieceFactory {
     public static PieceInterface from(final PieceEnum type) {

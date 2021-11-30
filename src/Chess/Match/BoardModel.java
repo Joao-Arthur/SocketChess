@@ -2,13 +2,13 @@ package Chess.Match;
 
 import java.awt.Point;
 
-import Chess.Board.Piece.PieceEnum;
-import Chess.Board.Piece.PieceFactory;
-import Chess.Board.Piece.MovePiece.MovePieceDTO;
-import Chess.Board.Player.PlayerEnum;
-import Chess.Board.Piece.MovePiece.InvalidArgsException;
-import Chess.Board.Piece.MovePiece.InvalidMovementException;
-import Chess.Board.Piece.MovePiece.NoSuchPieceException;
+import Chess.Match.Piece.PieceEnum;
+import Chess.Match.Piece.PieceFactory;
+import Chess.Match.Piece.MovePiece.MovePieceDTO;
+import Chess.Match.Player.PlayerEnum;
+import Chess.Match.Piece.MovePiece.InvalidArgsException;
+import Chess.Match.Piece.MovePiece.InvalidMovementException;
+import Chess.Match.Piece.MovePiece.NoSuchPieceException;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 

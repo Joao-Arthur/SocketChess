@@ -1,7 +1,7 @@
 package Chess.Match;
 
-import Chess.Board.Piece.PieceEnum;
-import Chess.Board.Player.PlayerEnum;
+import Chess.Match.Piece.PieceEnum;
+import Chess.Match.Player.PlayerEnum;
 
 public class BoardHouse {
     public final PieceEnum piece;
