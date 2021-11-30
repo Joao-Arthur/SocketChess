@@ -1,4 +1,4 @@
-package Board;
+package Chess.Board;
 
 import java.awt.image.BufferedImage;
 import java.awt.Point;

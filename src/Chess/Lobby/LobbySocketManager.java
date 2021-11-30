@@ -1,7 +1,11 @@
-import Socket.SocketManager;
+package Chess.Lobby;
+
+import Chess.Socket.SocketManager;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import Chess.WindowManager;
 
 public class LobbySocketManager implements SocketManager {
     public void handleMessage(String message) {

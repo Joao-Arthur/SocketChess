@@ -1,4 +1,4 @@
-package Board.Piece.MovePiece;
+package Chess.Board.Piece.MovePiece;
 
 public class InvalidArgsException extends RuntimeException {
     public InvalidArgsException(String message) {

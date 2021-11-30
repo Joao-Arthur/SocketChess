@@ -1,4 +1,4 @@
-package Board;
+package Chess.Board;
 
 import java.io.IOException;
 import java.awt.image.BufferedImage;

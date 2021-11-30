@@ -1,4 +1,4 @@
-package Socket;
+package Chess.Socket;
 
 //transformar em interface e factory
 public class SocketService {

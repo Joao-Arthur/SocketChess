@@ -1,4 +1,6 @@
-import Socket.SocketManager;
+package Chess;
+
+import Chess.Socket.SocketManager;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

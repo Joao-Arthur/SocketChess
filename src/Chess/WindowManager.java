@@ -1,3 +1,7 @@
+package Chess;
+
+import Chess.Lobby.Lobby;
+
 public class WindowManager {
     private static WindowManager instance;
     private Lobby lobbyScreen;

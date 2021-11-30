@@ -1,14 +1,14 @@
-package Board;
+package Chess.Board;
 
 import java.awt.Point;
 
-import Board.Piece.PieceEnum;
-import Board.Piece.PieceFactory;
-import Board.Piece.MovePiece.MovePieceDTO;
-import Board.Player.PlayerEnum;
-import Board.Piece.MovePiece.InvalidArgsException;
-import Board.Piece.MovePiece.InvalidMovementException;
-import Board.Piece.MovePiece.NoSuchPieceException;
+import Chess.Board.Piece.PieceEnum;
+import Chess.Board.Piece.PieceFactory;
+import Chess.Board.Piece.MovePiece.MovePieceDTO;
+import Chess.Board.Player.PlayerEnum;
+import Chess.Board.Piece.MovePiece.InvalidArgsException;
+import Chess.Board.Piece.MovePiece.InvalidMovementException;
+import Chess.Board.Piece.MovePiece.NoSuchPieceException;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 

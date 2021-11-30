@@ -1,4 +1,6 @@
-import Socket.SocketService;
+package Chess.Lobby;
+
+import Chess.Socket.SocketService;
 
 public class LobbyService {
     public static final String CREATE_MATCH_MESSAGE = "NEW_MATCH";

@@ -1,6 +1,6 @@
-package Board.Piece.MovePiece;
+package Chess.Board.Piece.MovePiece;
 
-import Board.BoardHouse;
+import Chess.Board.BoardHouse;
 import java.awt.Point;
 
 public class MovePieceDTO {

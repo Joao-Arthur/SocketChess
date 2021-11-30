@@ -1,6 +1,6 @@
-package Board.Piece.MovePiece;
+package Chess.Board.Piece.MovePiece;
 
-import Board.Player.PlayerEnum;
+import Chess.Board.Player.PlayerEnum;
 
 public class MovePieceService {
     public void execute(MovePieceDTO movePieceDTO) {

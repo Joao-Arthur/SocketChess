@@ -1,7 +1,7 @@
-package Board;
+package Chess.Board;
 
-import Board.Piece.PieceEnum;
-import Board.Player.PlayerEnum;
+import Chess.Board.Piece.PieceEnum;
+import Chess.Board.Player.PlayerEnum;
 
 public class BoardHouse {
     public final PieceEnum piece;

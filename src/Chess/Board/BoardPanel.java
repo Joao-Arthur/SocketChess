@@ -1,4 +1,4 @@
-package Board;
+package Chess.Board;
 
 import javax.swing.JPanel;
 import java.awt.Point;

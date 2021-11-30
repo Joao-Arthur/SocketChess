@@ -1,8 +1,8 @@
-package Board.Piece;
+package Chess.Board.Piece;
 
-import Board.Piece.MovePiece.MovePieceService;
-import Board.Piece.MovePiece.MovePieceDTO;
-import Board.Piece.MovePiece.InvalidMovementException;
+import Chess.Board.Piece.MovePiece.MovePieceService;
+import Chess.Board.Piece.MovePiece.MovePieceDTO;
+import Chess.Board.Piece.MovePiece.InvalidMovementException;
 
 public class King implements PieceInterface {
     public void movePiece(MovePieceDTO movePieceDTO) {

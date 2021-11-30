@@ -1,7 +1,9 @@
+package Chess;
+
 import java.awt.*;
 import javax.swing.*;
 
-import Board.BoardPanel;
+import Chess.Board.BoardPanel;
 
 public class Match {
     private final JFrame matchScreen;
