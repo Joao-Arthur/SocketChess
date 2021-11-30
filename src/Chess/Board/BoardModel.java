@@ -99,65 +99,16 @@ public class BoardModel {
     public void movePiece(Point from, Point to) {
         final var fromHouse = getModelHouse(from);
         final var toHouse = getModelHouse(to);
-        if (fromHouse == null)
-            return;
-        if (toHouse == null)
-            return;
-        if (fromHouse.piece == PieceEnum.NONE)
-            return;
-        if (fromHouse.player == PlayerEnum.NONE)
-            return;
-        if (fromHouse.player == toHouse.player)
-            return;
-
-        final var distanceX = (int) from.getX() - (int) to.getX();
-        final var deltaX = Math.abs(distanceX);
-        final var distanceY = (int) from.getY() - (int) to.getY();
-        final var deltaY = Math.abs(distanceY);
-
-        switch (fromHouse.piece) {
-            case NONE:
-                return;
-            case PAWN:
-                var bool = false;
-                try {
-                    PieceFactory.from(fromHouse.piece)
-                            .movePiece(new MovePieceDTO(from, fromHouse, to, toHouse));
-                } catch (InvalidArgsException exception) {
-                    Logger.getLogger(BoardModel.class.getName()).log(Level.SEVERE, null, exception);
-                    bool = true;
-                } catch (InvalidMovementException exception) {
-                    Logger.getLogger(BoardModel.class.getName()).log(Level.INFO, null, exception);
-                    bool = true;
-                } catch (NoSuchPieceException exception) {
-                    Logger.getLogger(BoardModel.class.getName()).log(Level.INFO, null, exception);
-                    bool = true;
-                }
-                if (bool)
-                    return;
-                break;
-            case ROOK:
-                if (deltaX > 0 && deltaY > 0)
-                    return;
-                break;
-            case BISHOP:
-                if (deltaX != deltaY)
-                    return;
-                break;
-            case KNIGHT:
-                if ((deltaY != 2 || deltaX != 1) && (deltaX != 2 || deltaY != 1))
-                    return;
-                break;
-            case KING:
-                if (deltaX > 1 || deltaY > 1)
-                    return;
-                break;
-            case QUEEN:
-                if ((deltaX > 0 && deltaY > 0) && (deltaX != deltaY))
-                    return;
-                break;
+        try {
+            PieceFactory.from(fromHouse.piece).movePiece(new MovePieceDTO(from, fromHouse, to, toHouse));
+            update(from, to);
+        } catch (InvalidArgsException exception) {
+            Logger.getLogger(BoardModel.class.getName()).log(Level.SEVERE, null, exception);
+        } catch (InvalidMovementException exception) {
+            Logger.getLogger(BoardModel.class.getName()).log(Level.INFO, null, exception);
+        } catch (NoSuchPieceException exception) {
+            Logger.getLogger(BoardModel.class.getName()).log(Level.INFO, null, exception);
         }
-        update(from, to);
     }
 
     public BoardHouse getModelHouse(int yIndex, int xIndex) {
