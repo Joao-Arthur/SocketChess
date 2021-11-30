@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 public class LobbySocketManager implements SocketManager {
     public void handleMessage(String message) {
         switch (message) {
-            case NewMatchService.CREATE_MATCH_MESSAGE:
+            case LobbyService.CREATE_MATCH_MESSAGE:
                 WindowManager.getInstance().goToMatch();
                 break;
             default:

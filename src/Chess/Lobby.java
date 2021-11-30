@@ -9,12 +9,12 @@ import java.awt.event.MouseEvent;
 
 public class Lobby {
     private final JFrame lobbyScreen;
-    private final NewMatchService newMatchService;
+    private final LobbyService lobbyService;
 
     public Lobby() {
         lobbyScreen = createLobbyScreen();
         lobbyScreen.add(createSidebar());
-        newMatchService = new NewMatchService();
+        lobbyService = new LobbyService();
     }
 
     private JFrame createLobbyScreen() {
@@ -36,7 +36,7 @@ public class Lobby {
         createMatchButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                newMatchService.createServerForMatch();
+                lobbyService.createServerForMatch();
             }
         });
         sidebar.add(createMatchButton);
@@ -46,7 +46,7 @@ public class Lobby {
         connectToMatchButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                newMatchService.createClientForMatch();
+                lobbyService.createClientForMatch();
             }
         });
         sidebar.add(connectToMatchButton);

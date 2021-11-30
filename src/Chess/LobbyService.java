@@ -1,6 +1,6 @@
 import Socket.SocketService;
 
-public class NewMatchService {
+public class LobbyService {
     public static final String CREATE_MATCH_MESSAGE = "NEW_MATCH";
 
     public void createServerForMatch() {
