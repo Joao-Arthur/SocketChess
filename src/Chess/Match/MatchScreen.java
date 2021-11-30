@@ -5,8 +5,11 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import Chess.GUI.GUIScreen;
 
-public class MatchScreen {
+public class MatchScreen implements GUIScreen {
     private final JFrame matchScreen;
     private final MatchService matchService;
 
@@ -29,7 +32,14 @@ public class MatchScreen {
 
     private JPanel createSidebar() {
         final var sidebar = new JPanel();
-        sidebar.add(createSidebarButton("desistir"));
+        final var giveUpButton = createSidebarButton("desistir");
+        giveUpButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                matchService.giveUp();
+            }
+        });
+        sidebar.add(giveUpButton);
         return sidebar;
     }
 

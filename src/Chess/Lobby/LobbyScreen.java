@@ -8,8 +8,9 @@ import javax.swing.Box;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import Chess.GUI.GUIScreen;
 
-public class LobbyScreen {
+public class LobbyScreen implements GUIScreen {
     private final JFrame lobbyScreen;
     private final LobbyService lobbyService;
 
