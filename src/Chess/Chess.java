@@ -9,8 +9,6 @@ public class Chess {
 /*
  * TODO
  * - REFACTOR SOCKET
- * - trocar de singleton pra um builder
- * ----- definir se é client ou servidor
  * ----- criar classe com a funcionalidade comum
  * 
  * 

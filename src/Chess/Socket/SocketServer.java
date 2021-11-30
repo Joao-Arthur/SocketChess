@@ -8,36 +8,41 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class SocketServer {
+public class SocketServer implements SocketInterface {
     PrintStream output;
     SocketManager manager;
+    private boolean isOpen;
 
-    public SocketServer() {
+    public SocketServer(SocketManager manager) {
+        this.manager = manager;
+        isOpen = true;
         try {
             ServerSocket server = new ServerSocket(SocketService.PORT);
             Socket client = server.accept();
             output = new PrintStream(client.getOutputStream());
             new Thread(() -> {
-                while (true) {
+                while (isOpen) {
                     try {
                         Scanner input = new Scanner(client.getInputStream());
-                        handleInput(input.nextLine());
+                        receive(input.nextLine());
                     } catch (IOException exception) {
                         Logger.getLogger(SocketServer.class.getName()).log(Level.SEVERE, null, exception);
                     }
                 }
-                // server.close();
+                try  {
+                    output.close();
+                    client.close();
+                    server.close();
+                } catch (IOException exception) {
+                    Logger.getLogger(SocketServer.class.getName()).log(Level.SEVERE, null, exception);
+                }
             }).start();
         } catch (IOException exception) {
             Logger.getLogger(SocketServer.class.getName()).log(Level.SEVERE, null, exception);
         }
     }
 
-    public void setManager(SocketManager manager) {
-        this.manager = manager;
-    }
-
-    private void handleInput(String message) {
+    public void receive(String message) {
         if (message == null)
             return;
         if (message.equals(""))
@@ -50,5 +55,9 @@ public class SocketServer {
     public void send(String message) {
         if (output != null)
             output.println(message);
+    }
+
+    public void close() {
+        isOpen = false;
     }
 }
