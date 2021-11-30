@@ -1,10 +1,11 @@
 package Chess;
 
-import Chess.Lobby.Lobby;
+import Chess.Lobby.LobbyScreen;
+import Chess.Match.Match;
 
 public class WindowManager {
     private static WindowManager instance;
-    private Lobby lobbyScreen;
+    private LobbyScreen lobbyScreen;
     private Match matchScreen;
 
     public static WindowManager getInstance() {
@@ -18,7 +19,7 @@ public class WindowManager {
             matchScreen.dispose();
             matchScreen = null;
         }
-        lobbyScreen = new Lobby();
+        lobbyScreen = new LobbyScreen();
     }
 
     public void goToMatch() {

@@ -9,11 +9,11 @@ import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Lobby {
+public class LobbyScreen {
     private final JFrame lobbyScreen;
     private final LobbyService lobbyService;
 
-    public Lobby() {
+    public LobbyScreen() {
         lobbyScreen = createLobbyScreen();
         lobbyScreen.add(createSidebar());
         lobbyService = new LobbyService();

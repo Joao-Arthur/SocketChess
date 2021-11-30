@@ -1,4 +1,4 @@
-package Chess;
+package Chess.Match;
 
 import Chess.Socket.SocketManager;
 
