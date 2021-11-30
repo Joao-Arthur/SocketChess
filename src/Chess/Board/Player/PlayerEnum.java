@@ -1,13 +1,13 @@
-package Board;
+package Board.Player;
 
-public enum BoardPlayer {
+public enum PlayerEnum {
     NONE("NONE"),
     WHITE("WHITE"),
     BLACK("BLACK");
 
     public final String name;
 
-    BoardPlayer(final String name) {
+    PlayerEnum(final String name) {
         this.name = name;
     }
 

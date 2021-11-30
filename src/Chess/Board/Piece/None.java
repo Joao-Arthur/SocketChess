@@ -1,10 +1,10 @@
 package Board.Piece;
 
-import Board.Piece.MovePiece.MovePieceService;
+import Board.Piece.MovePiece.InvalidMovementException;
+import Board.Piece.MovePiece.MovePieceDTO;
 
 public class None implements PieceInterface {
-    public void movePiece() {
-        final var moveService = new MovePieceService();
-        moveService.execute();
+    public void movePiece(MovePieceDTO movePieceDTO) {
+        throw new InvalidMovementException("fromHouse.piece == PieceEnum.NONE");
     }
 }

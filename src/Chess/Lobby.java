@@ -58,9 +58,6 @@ public class Lobby {
     private JButton createSidebarButton(String title) {
         final var sidebarButton = new JButton(title);
         final var size = new Dimension(150, 30);
-        //sidebarButton.setMinimumSize(size);
-        //sidebarButton.setSize(size);
-        //sidebarButton.setMaximumSize(size);
         sidebarButton.setPreferredSize(size);
         return sidebarButton;
     }

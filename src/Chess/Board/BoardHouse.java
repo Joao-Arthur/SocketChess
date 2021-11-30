@@ -1,18 +1,27 @@
 package Board;
 
 import Board.Piece.PieceEnum;
+import Board.Player.PlayerEnum;
 
 public class BoardHouse {
     public final PieceEnum piece;
-    public final BoardPlayer player;
+    public final PlayerEnum player;
+    public final boolean hasMoved;
 
-    public BoardHouse(BoardPlayer player, PieceEnum piece) {
+    public BoardHouse(PlayerEnum player, PieceEnum piece) {
         this.piece = piece;
         this.player = player;
+        hasMoved = false;
+    }
+
+    public BoardHouse(BoardHouse house) {
+        this.piece = house.piece;
+        this.player = house.player;
+        hasMoved = true;
     }
 
     @Override
     public String toString() {
-        return player + "_" + piece;
+        return new StringBuilder().append(player).append("_").append(piece).toString();
     }
 }
