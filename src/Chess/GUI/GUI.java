@@ -16,8 +16,10 @@ public class GUI {
     }
 
     public void disposeCurrentScreen() {
-        if (currentScreen != null)
+        if (currentScreen != null) {
             currentScreen.dispose();
+            currentScreen = null;
+        }
     }
 
     public void closeAndExit() {
