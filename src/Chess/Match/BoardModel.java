@@ -102,11 +102,11 @@ public class BoardModel {
     }
 
     public BoardHouse getModelHouse(Point point) {
-        return getModelHouse((int) point.getY(), (int) point.getX());
+        return getModelHouse(point.y, point.x);
     }
 
     private void update(Point from, Point to) {
-        board[(int) to.getY()][(int) to.getX()] = new BoardHouse(getModelHouse(from));
-        board[(int) from.getY()][(int) from.getX()] = new BoardHouse(PlayerEnum.NONE, PieceEnum.NONE);
+        board[to.y][to.x] = new BoardHouse(getModelHouse(from));
+        board[from.y][from.x] = new BoardHouse(PlayerEnum.NONE, PieceEnum.NONE);
     }
 }

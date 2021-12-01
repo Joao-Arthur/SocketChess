@@ -37,7 +37,7 @@ public class MatchScreen implements GUIScreen {
         giveUpButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                if (JOptionPane.showConfirmDialog(null, "Tem certeza que quer desistir?", "Desistir",
+                if (JOptionPane.showConfirmDialog(matchScreen, "Tem certeza que quer desistir?", "Desistir",
                         JOptionPane.WARNING_MESSAGE) == JOptionPane.YES_OPTION) {
                     matchService.giveUp();
                 }

@@ -3,6 +3,7 @@ package Chess.Match;
 import Chess.GUI.GUI;
 import Chess.Lobby.LobbyScreen;
 import Chess.Socket.SocketInstance;
+import java.awt.Point;
 
 public class MatchService {
     MatchService() {
@@ -16,7 +17,26 @@ public class MatchService {
         GUI.getInstance().goTo(new LobbyScreen());
     }
 
-    public void movePiece() {
-
+    public void movePiece(Point from, Point to) {
+        System.out.println(
+            new StringBuilder("MOVE")
+                .append("_")
+                .append("FROM")
+                .append("[")
+                .append(from.y)
+                .append("]")
+                .append("[")
+                .append(from.x)
+                .append("]")
+                .append("_")
+                .append("TO")
+                .append("[")
+                .append(from.y)
+                .append("]")
+                .append("[")
+                .append(from.x)
+                .append("]")
+                .toString()
+        );
     }
 }

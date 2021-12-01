@@ -47,10 +47,10 @@ public class BoardPanel extends JPanel {
         final var paddingX = (width - totalSize) / 2;
         final var paddingY = (height - totalSize) / 2;
         final var squareSize = totalSize / 8;
-        final var currentXClicked = (((int) currentClick.getX() - paddingX) / squareSize);
-        final var lastXClicked = (((int) lastClick.getX() - paddingX) / squareSize);
-        final var currentYClicked = (((int) currentClick.getY() - paddingY) / squareSize);
-        final var lastYClicked = (((int) lastClick.getY() - paddingY) / squareSize);
+        final var currentXClicked = ((currentClick.x - paddingX) / squareSize);
+        final var lastXClicked = ((lastClick.x - paddingX) / squareSize);
+        final var currentYClicked = ((currentClick.y - paddingY) / squareSize);
+        final var lastYClicked = ((lastClick.y - paddingY) / squareSize);
         final var from = new Point(lastXClicked, lastYClicked);
         final var to = new Point(currentXClicked, currentYClicked);
         if (from.equals(to))
@@ -77,8 +77,8 @@ public class BoardPanel extends JPanel {
         final var paddingX = (width - totalSize) / 2;
         final var paddingY = (height - totalSize) / 2;
         final var squareSize = totalSize / 8;
-        return ((((int) point.getX() - paddingX) / squareSize) == (x - paddingX) / squareSize &&
-                (((int) point.getY() - paddingY) / squareSize) == (y - paddingY) / squareSize);
+        return (((point.x - paddingX) / squareSize) == (x - paddingX) / squareSize &&
+                ((point.y - paddingY) / squareSize) == (y - paddingY) / squareSize);
     }
 
     private boolean isSquareClicked(int x, int y, int squareSize) {

@@ -19,9 +19,9 @@ public class MovePieceDTO {
         this.fromHouse = fromHouse;
         this.to = to;
         this.toHouse = toHouse;
-        distanceX = (int) from.getX() - (int) to.getX();
+        distanceX = from.x - to.x;
         deltaX = Math.abs(distanceX);
-        distanceY = (int) from.getY() - (int) to.getY();
+        distanceY = from.y - to.y;
         deltaY = Math.abs(distanceY);
     }
 }
