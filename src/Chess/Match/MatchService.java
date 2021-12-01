@@ -18,7 +18,7 @@ public class MatchService {
     }
 
     public void movePiece(Point from, Point to) {
-        System.out.println(
+        SocketInstance.get().send(
             new StringBuilder("MOVE")
                 .append("_")
                 .append("FROM")

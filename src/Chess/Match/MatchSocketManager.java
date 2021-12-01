@@ -18,6 +18,9 @@ final class MatchSocketManager implements SocketManager {
                 GUI.getInstance().goTo(new LobbyScreen());
                 break;
             default:
+                if (message.startsWith(MatchMessages.MOVE_MESSAGE_PREFIX)) {
+
+                }
                 Logger.getLogger(MatchSocketManager.class.getName()).log(Level.WARNING,
                         new StringBuilder()
                                 .append("Received message \"")
