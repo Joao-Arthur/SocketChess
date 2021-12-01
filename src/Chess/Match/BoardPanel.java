@@ -8,6 +8,11 @@ import java.awt.Color;
 import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.logging.Logger;
+import java.util.logging.Level;
+import Chess.Match.Piece.MovePiece.InvalidArgsException;
+import Chess.Match.Piece.MovePiece.InvalidMovementException;
+import Chess.Match.Piece.MovePiece.NoSuchPieceException;
 
 public class BoardPanel extends JPanel {
     private final MatchService matchService;
@@ -50,7 +55,17 @@ public class BoardPanel extends JPanel {
         final var to = new Point(currentXClicked, currentYClicked);
         if (from.equals(to))
             return;
-        modelToView.movePiece(from, to);
+        try {
+            modelToView.movePiece(from, to);
+            matchService.movePiece(from, to);
+        } catch (InvalidArgsException exception) {
+            Logger.getLogger(BoardModel.class.getName()).log(Level.SEVERE, null, exception);
+        } catch (InvalidMovementException exception) {
+            Logger.getLogger(BoardModel.class.getName()).log(Level.INFO, null, exception);
+        } catch (NoSuchPieceException exception) {
+            Logger.getLogger(BoardModel.class.getName()).log(Level.INFO, null, exception);
+        }
+
         currentClick = null;
         lastClick = null;
     }

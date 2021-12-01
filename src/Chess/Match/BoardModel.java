@@ -1,16 +1,10 @@
 package Chess.Match;
 
 import java.awt.Point;
-
 import Chess.Match.Piece.PieceEnum;
 import Chess.Match.Piece.PieceFactory;
 import Chess.Match.Piece.MovePiece.MovePieceDTO;
 import Chess.Match.Player.PlayerEnum;
-import Chess.Match.Piece.MovePiece.InvalidArgsException;
-import Chess.Match.Piece.MovePiece.InvalidMovementException;
-import Chess.Match.Piece.MovePiece.NoSuchPieceException;
-import java.util.logging.Logger;
-import java.util.logging.Level;
 
 public class BoardModel {
     private BoardHouse[][] board = {
@@ -99,16 +93,8 @@ public class BoardModel {
     public void movePiece(Point from, Point to) {
         final var fromHouse = getModelHouse(from);
         final var toHouse = getModelHouse(to);
-        try {
-            PieceFactory.from(fromHouse.piece).movePiece(new MovePieceDTO(from, fromHouse, to, toHouse));
-            update(from, to);
-        } catch (InvalidArgsException exception) {
-            Logger.getLogger(BoardModel.class.getName()).log(Level.SEVERE, null, exception);
-        } catch (InvalidMovementException exception) {
-            Logger.getLogger(BoardModel.class.getName()).log(Level.INFO, null, exception);
-        } catch (NoSuchPieceException exception) {
-            Logger.getLogger(BoardModel.class.getName()).log(Level.INFO, null, exception);
-        }
+        PieceFactory.from(fromHouse.piece).movePiece(new MovePieceDTO(from, fromHouse, to, toHouse));
+        update(from, to);
     }
 
     public BoardHouse getModelHouse(int yIndex, int xIndex) {
