@@ -3,6 +3,7 @@ package Chess.Match;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
@@ -36,7 +37,10 @@ public class MatchScreen implements GUIScreen {
         giveUpButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                matchService.giveUp();
+                if (JOptionPane.showConfirmDialog(null, "Tem certeza que quer desistir?", "Desistir",
+                        JOptionPane.WARNING_MESSAGE) == JOptionPane.YES_OPTION) {
+                    matchService.giveUp();
+                }
             }
         });
         sidebar.add(giveUpButton);

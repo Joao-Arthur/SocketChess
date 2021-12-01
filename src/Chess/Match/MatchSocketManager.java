@@ -6,12 +6,15 @@ import Chess.Socket.SocketInstance;
 import Chess.Socket.SocketManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 final class MatchSocketManager implements SocketManager {
     public void handleMessage(String message) {
         switch (message) {
             case MatchMessages.GIVE_UP_MESSAGE:
                 SocketInstance.close();
+                JOptionPane.showMessageDialog(null, "Seu oponente desistiu.", "Vitória",
+                        JOptionPane.INFORMATION_MESSAGE);
                 GUI.getInstance().goTo(new LobbyScreen());
                 break;
             default:

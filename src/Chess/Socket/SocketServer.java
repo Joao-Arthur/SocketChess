@@ -22,16 +22,18 @@ public class SocketServer implements SocketInterface {
         }
     }
 
-    public void setManager(SocketManager manager) {
+    public SocketServer setManager(SocketManager manager) {
         service.setManager(manager);
+        return this;
     }
 
     public void receive(String message) {
         service.receive(message);
     }
 
-    public void send(String message) {
+    public SocketServer send(String message) {
         service.send(message);
+        return this;
     }
 
     public void close() {

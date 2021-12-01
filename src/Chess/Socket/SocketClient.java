@@ -21,16 +21,18 @@ public class SocketClient implements SocketInterface {
         }
     }
 
-    public void setManager(SocketManager manager) {
+    public SocketClient setManager(SocketManager manager) {
         service.setManager(manager);
+        return this;
     }
 
     public void receive(String message) {
         service.receive(message);
     }
 
-    public void send(String message) {
+    public SocketClient send(String message) {
         service.send(message);
+        return this;
     }
 
     public void close() {
