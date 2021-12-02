@@ -32,21 +32,9 @@ public class BoardPanel extends JPanel {
             }
         });
 
-        MatchObserver.register(new MatchObserverHandler(matchService));
+        MatchObserver.register(new MatchObserverHandler(matchService, this));
 
         boardImages = new BoardImages();
-
-        new Thread(() -> {
-            var isrunning = true;
-            try {
-                while (isrunning) {
-                    Thread.sleep(500);
-                    repaint();
-                }
-            } catch (Exception e) {
-                isrunning = false;
-            }
-        }).start();
     }
 
     private void verifyMovedPiece() {
