@@ -9,6 +9,6 @@ public class King implements PieceInterface {
         final var moveService = new MovePieceService();
         moveService.execute(movePieceDTO);
         if (movePieceDTO.deltaX > 1 || movePieceDTO.deltaY > 1)
-            throw new InvalidMovementException("deltaX > 1 || deltaY > 1");
+            throw new InvalidMovementException("deltaX > 1 or deltaY > 1");
     }
 }

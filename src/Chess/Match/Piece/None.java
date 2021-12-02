@@ -5,6 +5,6 @@ import Chess.Match.Piece.MovePiece.InvalidMovementException;
 
 public class None implements PieceInterface {
     public void movePiece(MovePieceDTO movePieceDTO) {
-        throw new InvalidMovementException("fromHouse.piece == PieceEnum.NONE");
+        throw new InvalidMovementException("fromPiece = NONE");
     }
 }

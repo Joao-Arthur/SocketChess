@@ -9,6 +9,6 @@ public class Rook implements PieceInterface {
         final var moveService = new MovePieceService();
         moveService.execute(movePieceDTO);
         if (movePieceDTO.deltaX > 0 && movePieceDTO.deltaY > 0)
-            throw new InvalidMovementException("deltaX > 0 && deltaY > 0");
+            throw new InvalidMovementException("deltaX > 0 and deltaY > 0");
     }
 }
