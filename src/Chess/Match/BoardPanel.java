@@ -19,7 +19,6 @@ public class BoardPanel extends JPanel {
     Point currentClick;
     Point lastClick;
     BoardImages boardImages;
-    ModelToView modelToView;
 
     public BoardPanel(MatchService matchService) {
         this.matchService = matchService;
@@ -32,8 +31,22 @@ public class BoardPanel extends JPanel {
                 repaint();
             }
         });
-        modelToView = new ModelToView();
+
+        MatchObserver.register(new MatchObserverHandler(matchService));
+
         boardImages = new BoardImages();
+
+        new Thread(() -> {
+            var isrunning = true;
+            try {
+                while (isrunning) {
+                    Thread.sleep(500);
+                    repaint();
+                }
+            } catch (Exception e) {
+                isrunning = false;
+            }
+        }).start();
     }
 
     private void verifyMovedPiece() {
@@ -47,17 +60,17 @@ public class BoardPanel extends JPanel {
         final var paddingX = (width - totalSize) / 2;
         final var paddingY = (height - totalSize) / 2;
         final var squareSize = totalSize / 8;
-        final var currentXClicked = ((currentClick.x - paddingX) / squareSize);
-        final var lastXClicked = ((lastClick.x - paddingX) / squareSize);
-        final var currentYClicked = ((currentClick.y - paddingY) / squareSize);
-        final var lastYClicked = ((lastClick.y - paddingY) / squareSize);
+        final var lastXClicked = (lastClick.x - paddingX) / squareSize;
+        final var lastYClicked = (lastClick.y - paddingY) / squareSize;
         final var from = new Point(lastXClicked, lastYClicked);
+        final var currentXClicked = (currentClick.x - paddingX) / squareSize;
+        final var currentYClicked = (currentClick.y - paddingY) / squareSize;
         final var to = new Point(currentXClicked, currentYClicked);
         if (from.equals(to))
             return;
         try {
-            modelToView.movePiece(from, to);
             matchService.movePiece(from, to);
+            matchService.sendMovementToOpponent(from, to);
         } catch (InvalidArgsException exception) {
             Logger.getLogger(BoardModel.class.getName()).log(Level.SEVERE, null, exception);
         } catch (InvalidMovementException exception) {
@@ -112,7 +125,7 @@ public class BoardPanel extends JPanel {
                 final var y = paddingY + yIndex * squareSize;
                 drawer.setPaint(getSquareColor(x, y, squareSize, xIndex, yIndex));
                 drawer.fillRect(x, y, squareSize, squareSize);
-                final var imageToDraw = modelToView.getPieceImage(xIndex, yIndex);
+                final var imageToDraw = matchService.getPieceImage(xIndex, yIndex);
                 if (imageToDraw != null)
                     drawer.drawImage(imageToDraw, x, y, squareSize, squareSize, this);
             }

@@ -19,7 +19,8 @@ final class MatchSocketManager implements SocketManager {
                 break;
             default:
                 if (message.startsWith(MatchMessages.MOVE_MESSAGE_PREFIX)) {
-
+                    MatchObserver.dispatch(MatchMessages.MOVE_MESSAGE_PREFIX, message);
+                    break;
                 }
                 Logger.getLogger(MatchSocketManager.class.getName()).log(Level.WARNING,
                         new StringBuilder()

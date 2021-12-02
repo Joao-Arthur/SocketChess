@@ -24,7 +24,7 @@ public class MatchScreen implements GUIScreen {
     private JFrame createMatchScreen() {
         final var matchScreen = new JFrame();
         matchScreen.setVisible(true);
-        matchScreen.setSize(1000, 768);
+        matchScreen.setSize(800, 650);
         matchScreen.setTitle("Match | Socket Chess");
         matchScreen.setLocationRelativeTo(null);
         matchScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
