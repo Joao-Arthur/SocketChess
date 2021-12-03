@@ -25,29 +25,12 @@ public class MatchService {
         GUI.getInstance().goTo(new LobbyScreen());
     }
 
-    public void movePiece(Point from, Point to) {
-        modelToView.movePiece(from, to);
+    public void movePiece(MovementDTO movementDTO) {
+        modelToView.movePiece(movementDTO.from, movementDTO.to);
     }
 
     public void sendMovementToOpponent(Point from, Point to) {
         SocketInstance.get().send(
-                new StringBuilder("MOVE")
-                        .append("_")
-                        .append("FROM")
-                        .append("[")
-                        .append(from.y)
-                        .append("]")
-                        .append("[")
-                        .append(from.x)
-                        .append("]")
-                        .append("_")
-                        .append("TO")
-                        .append("[")
-                        .append(to.y)
-                        .append("]")
-                        .append("[")
-                        .append(to.x)
-                        .append("]")
-                        .toString());
+            MoveMessageSocketService.encode(new MovementDTO(from, to))
     }
 }

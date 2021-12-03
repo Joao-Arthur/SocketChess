@@ -14,11 +14,7 @@ public class MatchObserverHandler implements MatchObserverInterface {
     }
 
     public void handle(String event) {
-        final var fromY = Integer.parseInt(event.substring(10, 11));
-        final var fromX = Integer.parseInt(event.substring(13, 14));
-        final var toY = Integer.parseInt(event.substring(19, 20));
-        final var toX = Integer.parseInt(event.substring(22, 23));
-        matchService.movePiece(new Point(fromX, fromY), new Point(toX, toY));
+        matchService.movePiece(MoveMessageSocketService.decode(event));
         component.repaint();
     }
 
