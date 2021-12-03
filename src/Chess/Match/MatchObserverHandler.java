@@ -1,7 +1,5 @@
 package Chess.Match;
 
-import java.awt.Point;
-
 import javax.swing.JComponent;
 
 public class MatchObserverHandler implements MatchObserverInterface {

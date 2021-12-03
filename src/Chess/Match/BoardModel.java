@@ -90,11 +90,12 @@ public class BoardModel {
             }
     };
 
-    public void movePiece(Point from, Point to) {
-        final var fromHouse = getModelHouse(from);
-        final var toHouse = getModelHouse(to);
-        PieceFactory.from(fromHouse.piece).movePiece(new MovePieceDTO(from, fromHouse, to, toHouse));
-        update(from, to);
+    public void movePiece(MovementDTO movement) {
+        final var fromHouse = getModelHouse(movement.from);
+        final var toHouse = getModelHouse(movement.to);
+        PieceFactory.from(fromHouse.piece)
+                .movePiece(new MovePieceDTO(movement.from, fromHouse, movement.to, toHouse));
+        update(movement);
     }
 
     public BoardHouse getModelHouse(int yIndex, int xIndex) {
@@ -105,8 +106,8 @@ public class BoardModel {
         return getModelHouse(point.y, point.x);
     }
 
-    private void update(Point from, Point to) {
-        board[to.y][to.x] = new BoardHouse(getModelHouse(from));
-        board[from.y][from.x] = new BoardHouse(PlayerEnum.NONE, PieceEnum.NONE);
+    private void update(MovementDTO movement) {
+        board[movement.to.y][movement.to.x] = new BoardHouse(getModelHouse(movement.from));
+        board[movement.from.y][movement.from.x] = new BoardHouse(PlayerEnum.NONE, PieceEnum.NONE);
     }
 }

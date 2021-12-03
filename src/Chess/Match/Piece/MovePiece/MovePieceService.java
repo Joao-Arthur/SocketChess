@@ -18,6 +18,6 @@ public class MovePieceService {
         if (movePieceDTO.fromHouse.player == movePieceDTO.toHouse.player)
             throw new InvalidMovementException("fromPlayer = toPlayer");
         if (movePieceDTO.toHouse.piece == PieceEnum.KING)
-           throw new InvalidMovementException("toPiece = KING");
+            throw new InvalidMovementException("toPiece = KING");
     }
 }

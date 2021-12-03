@@ -11,10 +11,9 @@ public class Chess {
 
 /*
  * TODO
- * - implementar pelo menos check e check mate
+ * --- check e check mate
+ * --- peças no meio do caminho
+ * -- colocar uma lista pra exibir o que foi enviado pelo socket
+ * -- tratar fechar o socket, manter aberto após partidas e etc
  * - verificar a renderização do panel
- * - criar servico para transformar a mensagem do movimento 
- * - verificar peças no meio do caminho
- * - colocar uma lista pra exibir o que foi enviado pelo socket
- * - tratar fechar o socket, manter aberto após partidas e etc
  */

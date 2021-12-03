@@ -1,7 +1,6 @@
 package Chess.Match;
 
 import java.awt.image.BufferedImage;
-import java.awt.Point;
 
 public class ModelToView {
     BoardModel boardModel;
@@ -21,7 +20,7 @@ public class ModelToView {
         return boardImages.imagesMap.get(currentHouse.toString());
     }
 
-    public void movePiece(Point from, Point to) {
-        boardModel.movePiece(from, to);
+    public void movePiece(MovementDTO movement) {
+        boardModel.movePiece(movement);
     }
 }
