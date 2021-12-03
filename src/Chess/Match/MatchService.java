@@ -31,6 +31,6 @@ public class MatchService {
 
     public void sendMovementToOpponent(Point from, Point to) {
         SocketInstance.get().send(
-            MoveMessageSocketService.encode(new MovementDTO(from, to))
+            MoveMessageSocketService.encode(new MovementDTO(from, to)));
     }
 }

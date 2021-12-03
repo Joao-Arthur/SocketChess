@@ -57,7 +57,7 @@ public class BoardPanel extends JPanel {
         if (from.equals(to))
             return;
         try {
-            matchService.movePiece(from, to);
+            matchService.movePiece(new MovementDTO(from, to));
             matchService.sendMovementToOpponent(from, to);
         } catch (InvalidArgsException exception) {
             Logger.getLogger(BoardModel.class.getName()).log(Level.SEVERE, null, exception);
