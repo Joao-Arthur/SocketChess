@@ -1,18 +1,19 @@
 package Chess.Match;
 
 import java.awt.image.BufferedImage;
+import java.awt.Point;
 
-public class ModelToView {
+public class BoardController {
     BoardModel boardModel;
     BoardImages boardImages;
 
-    ModelToView() {
+    BoardController() {
         boardModel = new BoardModel();
         boardImages = new BoardImages();
     }
 
-    public BufferedImage getPieceImage(int xIndex, int yIndex) {
-        final var currentHouse = boardModel.getModelHouse(yIndex, xIndex);
+    public BufferedImage getPieceImage(Point indexPoint) {
+        final var currentHouse = boardModel.getModelHouse(indexPoint);
         if (currentHouse == null)
             return null;
         if (!boardImages.imagesMap.containsKey(currentHouse.toString()))

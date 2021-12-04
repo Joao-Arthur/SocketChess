@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.util.HashMap;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 public class BoardImages {
     private BufferedImage blackBishop;
@@ -39,7 +41,8 @@ public class BoardImages {
             whitePawn = loadImage("WhitePawn");
             whiteQueen = loadImage("WhiteQueen");
             whiteRook = loadImage("WhiteRook");
-        } catch (IOException e) {
+        } catch (IOException exception) {
+            Logger.getLogger(BoardImages.class.getName()).log(Level.SEVERE, null, exception);
         }
     }
 

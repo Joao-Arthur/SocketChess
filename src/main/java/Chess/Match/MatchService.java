@@ -1,20 +1,21 @@
 package Chess.Match;
 
+import java.awt.Point;
 import Chess.GUI.GUI;
 import Chess.Lobby.LobbyScreen;
 import Chess.Socket.SocketInstance;
 import java.awt.image.BufferedImage;
 
 public class MatchService {
-    ModelToView modelToView;
+    BoardController boardController;
 
     MatchService() {
         SocketInstance.get().setManager(new MatchSocketManager());
-        modelToView = new ModelToView();
+        boardController = new BoardController();
     }
 
-    public BufferedImage getPieceImage(int xIndex, int yIndex) {
-        return modelToView.getPieceImage(xIndex, yIndex);
+    public BufferedImage getPieceImage(Point indexPoint) {
+        return boardController.getPieceImage(indexPoint);
     }
 
     public void giveUp() {
@@ -25,10 +26,11 @@ public class MatchService {
     }
 
     public void movePiece(MovementDTO movement) {
-        modelToView.movePiece(movement);
+        boardController.movePiece(movement);
+        sendMovementToOpponent(movement);
     }
 
-    public void sendMovementToOpponent(MovementDTO movement) {
+    private void sendMovementToOpponent(MovementDTO movement) {
         SocketInstance.get().send(MoveMessageSocketService.encode(movement));
     }
 }

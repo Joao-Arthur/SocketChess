@@ -59,37 +59,38 @@ public class BoardPanel extends JPanel {
         final var movement = MovementDTO.from(from, to);
         try {
             matchService.movePiece(movement);
-            matchService.sendMovementToOpponent(movement);
         } catch (InvalidArgsException exception) {
             Logger.getLogger(BoardModel.class.getName()).log(Level.SEVERE, null, exception);
         } catch (InvalidMovementException exception) {
-            Logger.getLogger(BoardModel.class.getName()).log(Level.INFO, null, exception);
+            // Logger.getLogger(BoardModel.class.getName()).log(Level.INFO, null,
+            // exception);
         } catch (NoSuchPieceException exception) {
-            Logger.getLogger(BoardModel.class.getName()).log(Level.INFO, null, exception);
+            // Logger.getLogger(BoardModel.class.getName()).log(Level.INFO, null,
+            // exception);
         }
 
         currentClick = null;
         lastClick = null;
     }
 
-    private boolean isPointClicked(int x, int y, Point point) {
+    private boolean isPointClicked(Point currentPoint, Point clickPoint) {
         final var height = getHeight();
         final var width = getWidth();
         final var totalSize = Math.min(height, width);
         final var paddingX = (width - totalSize) / 2;
         final var paddingY = (height - totalSize) / 2;
         final var squareSize = totalSize / 8;
-        return (((point.x - paddingX) / squareSize) == (x - paddingX) / squareSize &&
-                ((point.y - paddingY) / squareSize) == (y - paddingY) / squareSize);
+        return (((clickPoint.x - paddingX) / squareSize) == (currentPoint.x - paddingX) / squareSize &&
+                ((clickPoint.y - paddingY) / squareSize) == (currentPoint.y - paddingY) / squareSize);
     }
 
-    private boolean isSquareClicked(int x, int y, int squareSize) {
+    private boolean isSquareClicked(Point point, int squareSize) {
         if (currentClick == null)
             return false;
-        final var isCurrentClicked = isPointClicked(x, y, currentClick);
+        final var isCurrentClicked = isPointClicked(point, currentClick);
         if (lastClick == null)
             return isCurrentClicked;
-        final var isLastClicked = isPointClicked(x, y, lastClick);
+        final var isLastClicked = isPointClicked(point, lastClick);
         if (isLastClicked && isCurrentClicked) {
             currentClick = null;
             return false;
@@ -112,19 +113,21 @@ public class BoardPanel extends JPanel {
             for (int xIndex = 0; xIndex < 8; xIndex++) {
                 final var x = paddingX + xIndex * squareSize;
                 final var y = paddingY + yIndex * squareSize;
-                drawer.setPaint(getSquareColor(x, y, squareSize, xIndex, yIndex));
+                final var point = new Point(x, y);
+                final var indexPoint = new Point(xIndex, yIndex);
+                drawer.setPaint(getSquareColor(squareSize, point, indexPoint));
                 drawer.fillRect(x, y, squareSize, squareSize);
-                final var imageToDraw = matchService.getPieceImage(xIndex, yIndex);
+                final var imageToDraw = matchService.getPieceImage(indexPoint);
                 if (imageToDraw != null)
                     drawer.drawImage(imageToDraw, x, y, squareSize, squareSize, this);
             }
         }
     }
 
-    private Color getSquareColor(int x, int y, int squareSize, int xIndex, int yIndex) {
-        if (isSquareClicked(x, y, squareSize))
+    private Color getSquareColor(int squareSize, Point point, Point indexPoint) {
+        if (isSquareClicked(point, squareSize))
             return BoardColors.FOCUS;
-        if ((xIndex + yIndex) % 2 == 1) {
+        if ((indexPoint.x + indexPoint.y) % 2 == 1) {
             return BoardColors.DARK;
         } else {
             return BoardColors.LIGHT;

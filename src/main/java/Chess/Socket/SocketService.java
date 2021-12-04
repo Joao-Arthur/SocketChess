@@ -46,6 +46,7 @@ public class SocketService {
     }
 
     public void receive(String message) {
+        Logger.getLogger(SocketService.class.getName()).log(Level.INFO, message);
         if (message == null)
             return;
         if (message.equals(""))
@@ -56,6 +57,7 @@ public class SocketService {
     }
 
     public void send(String message) {
+        System.out.println(message);
         if (output != null)
             output.println(message);
     }

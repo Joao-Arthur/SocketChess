@@ -28,4 +28,9 @@ public class MovementDTO {
     final var movement = (MovementDTO) object;
     return movement.from.equals(from) && movement.to.equals(to);
   }
+
+  @Override
+  public String toString() {
+    return "(" + from.x + "," + from.y + ")->(" + to.x + "," + to.y + ")";
+  }
 }

@@ -98,12 +98,8 @@ public class BoardModel {
         update(movement);
     }
 
-    public BoardHouse getModelHouse(int yIndex, int xIndex) {
-        return board[yIndex][xIndex];
-    }
-
     public BoardHouse getModelHouse(Point point) {
-        return getModelHouse(point.y, point.x);
+        return board[point.y][point.x];
     }
 
     private void update(MovementDTO movement) {
