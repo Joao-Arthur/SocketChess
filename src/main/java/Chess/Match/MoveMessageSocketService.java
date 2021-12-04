@@ -8,10 +8,11 @@ public class MoveMessageSocketService {
     private static final String format = "MOVE: (" + FROM_X + "," + FROM_Y + ") -> (" + TO_X + "," + TO_Y + ")";
 
     public static String encode(MovementDTO movement) {
-        return format.replace(FROM_X, String.valueOf(movement.from.x))
-                .replace(FROM_Y, String.valueOf(movement.from.y))
-                .replace(TO_X, String.valueOf(movement.to.x))
-                .replace(TO_Y, String.valueOf(movement.to.y));
+        final var fromX = String.valueOf(movement.from.x);
+        final var fromY = String.valueOf(movement.from.y);
+        final var toX = String.valueOf(movement.to.x);
+        final var toY = String.valueOf(movement.to.y);
+        return "MOVE: (" + fromX + "," + fromY + ") -> (" + toX + "," + toY + ")";
     }
 
     public static MovementDTO decode(String message) {

@@ -106,4 +106,9 @@ public class BoardModel {
         board[movement.to.y][movement.to.x] = new BoardHouse(getModelHouse(movement.from));
         board[movement.from.y][movement.from.x] = new BoardHouse(PlayerEnum.NONE, PieceEnum.NONE);
     }
+
+    @Override
+    public String toString() {
+        return "";
+    }
 }

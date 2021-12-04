@@ -1,0 +1,22 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "java",
+      "mainClass": "Chess.Chess",
+      "targetPath": "${workspaceFolder}/${workspaceFolderBasename}.jar",
+      "elements": [
+        "${compileOutput:clone}",
+        "${dependencies:clone}",
+        "${compileOutput:clone_9e0b00b2}",
+        "${dependencies:clone_9e0b00b2}"
+      ],
+      "problemMatcher": [],
+      "label": "java: exportjar:clone",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
