@@ -4,7 +4,6 @@ import Chess.GUI.GUI;
 import Chess.Lobby.LobbyScreen;
 import Chess.Socket.SocketInstance;
 import java.awt.image.BufferedImage;
-import java.awt.Point;
 
 public class MatchService {
     ModelToView modelToView;
@@ -29,8 +28,7 @@ public class MatchService {
         modelToView.movePiece(movement);
     }
 
-    public void sendMovementToOpponent(Point from, Point to) {
-        SocketInstance.get().send(
-                MoveMessageSocketService.encode(new MovementDTO(from, to)));
+    public void sendMovementToOpponent(MovementDTO movement) {
+        SocketInstance.get().send(MoveMessageSocketService.encode(movement));
     }
 }

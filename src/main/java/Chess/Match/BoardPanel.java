@@ -56,9 +56,10 @@ public class BoardPanel extends JPanel {
         final var to = new Point(currentXClicked, currentYClicked);
         if (from.equals(to))
             return;
+        final var movement = MovementDTO.from(from, to);
         try {
-            matchService.movePiece(new MovementDTO(from, to));
-            matchService.sendMovementToOpponent(from, to);
+            matchService.movePiece(movement);
+            matchService.sendMovementToOpponent(movement);
         } catch (InvalidArgsException exception) {
             Logger.getLogger(BoardModel.class.getName()).log(Level.SEVERE, null, exception);
         } catch (InvalidMovementException exception) {
