@@ -35,5 +35,4 @@ public class MoveMessageSocketServiceTest {
     assertEquals(MoveMessageSocketService.decode(encoded4), decoded4);
     assertEquals(MoveMessageSocketService.decode(encoded5), decoded5);
   }
-
 }

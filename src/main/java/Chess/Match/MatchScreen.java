@@ -9,12 +9,14 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import Chess.GUI.GUIScreen;
+import Chess.Match.Player.PlayerEnum;
 
 public class MatchScreen implements GUIScreen {
     private final JFrame matchScreen;
     private final MatchService matchService;
 
-    public MatchScreen() {
+    public MatchScreen(PlayerEnum opponentColor) {
+        System.out.println("opponent is: " + opponentColor);
         matchScreen = createMatchScreen();
         matchScreen.add(createSidebar(), BorderLayout.EAST);
         matchService = new MatchService();
