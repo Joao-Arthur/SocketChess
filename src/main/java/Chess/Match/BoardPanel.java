@@ -31,9 +31,7 @@ public class BoardPanel extends JPanel {
                 repaint();
             }
         });
-
         MatchObserver.register(new MatchObserverHandler(matchService, this));
-
         boardImages = new BoardImages();
     }
 

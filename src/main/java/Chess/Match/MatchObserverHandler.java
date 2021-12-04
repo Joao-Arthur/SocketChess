@@ -1,6 +1,11 @@
 package Chess.Match;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComponent;
+import Chess.Match.Piece.MovePiece.InvalidArgsException;
+import Chess.Match.Piece.MovePiece.InvalidMovementException;
+import Chess.Match.Piece.MovePiece.NoSuchPieceException;
 
 public class MatchObserverHandler implements MatchObserverInterface {
     private final MatchService matchService;
@@ -12,8 +17,19 @@ public class MatchObserverHandler implements MatchObserverInterface {
     }
 
     public void handle(String event) {
-        matchService.movePiece(MoveMessageSocketService.decode(event));
-        component.repaint();
+        try {
+            matchService.movePiece(MoveMessageSocketService.decode(event));
+            component.repaint();
+        } catch (InvalidArgsException exception) {
+            Logger.getLogger(MatchObserverHandler.class.getName()).log(Level.SEVERE, null, exception);
+        } catch (InvalidMovementException exception) {
+            // Logger.getLogger(MatchObserverHandler.class.getName()).log(Level.INFO, null,
+            // exception);
+        } catch (NoSuchPieceException exception) {
+            // Logger.getLogger(MatchObserverHandler.class.getName()).log(Level.INFO, null,
+            // exception);
+        }
+
     }
 
     public String getType() {

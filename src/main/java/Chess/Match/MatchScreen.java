@@ -29,7 +29,7 @@ public class MatchScreen implements GUIScreen {
         matchScreen.setSize(800, 650);
         matchScreen.setTitle("Match | Socket Chess");
         matchScreen.setLocationRelativeTo(null);
-        matchScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        matchScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         return matchScreen;
     }
 

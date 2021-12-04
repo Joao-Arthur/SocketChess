@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,15 +27,16 @@ public class SocketService {
 
     private void startObserving() {
         new Thread(() -> {
-            while (isOpen) {
+            while (isOpen)
                 receive(input.nextLine());
-            }
             try {
                 input.close();
                 output.close();
                 socket.close();
                 if (serverSocket != null)
                     serverSocket.close();
+            } catch (NoSuchElementException exception) {
+                manager.handleMessage(SocketMessages.NO_SUCH_ELEMENT);
             } catch (IOException exception) {
                 Logger.getLogger(SocketServer.class.getName()).log(Level.SEVERE, null, exception);
             }
