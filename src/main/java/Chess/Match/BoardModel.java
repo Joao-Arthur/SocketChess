@@ -90,7 +90,7 @@ public class BoardModel {
             }
     };
 
-    public void movePiece(MovementDTO movement) {
+    public void movePiece(Movement movement) {
         final var fromHouse = getModelHouse(movement.from);
         final var toHouse = getModelHouse(movement.to);
         PieceFactory.from(fromHouse.piece)
@@ -102,7 +102,7 @@ public class BoardModel {
         return board[point.y][point.x];
     }
 
-    private void update(MovementDTO movement) {
+    private void update(Movement movement) {
         board[movement.to.y][movement.to.x] = new BoardHouse(getModelHouse(movement.from));
         board[movement.from.y][movement.from.x] = new BoardHouse(PlayerEnum.NONE, PieceEnum.NONE);
     }

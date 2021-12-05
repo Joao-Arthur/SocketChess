@@ -21,7 +21,7 @@ public class BoardController {
         return boardImages.imagesMap.get(currentHouse.toString());
     }
 
-    public void movePiece(MovementDTO movement) {
+    public void movePiece(Movement movement) {
         boardModel.movePiece(movement);
     }
 }

@@ -55,7 +55,7 @@ public class BoardPanel extends JPanel {
         final var to = new Point(currentXClicked, currentYClicked);
         if (from.equals(to))
             return;
-        final var movement = MovementDTO.from(from, to);
+        final var movement = Movement.from(from, to);
         try {
             matchService.movePiece(movement);
         } catch (InvalidArgsException exception) {
