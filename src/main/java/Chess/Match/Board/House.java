@@ -3,7 +3,7 @@ package Chess.Match.Board;
 import Chess.Match.Board.Piece.PieceEnum;
 import Chess.Match.Player.PlayerEnum;
 
-public class House {
+public class House implements Printable {
     public final PieceEnum piece;
     public final PlayerEnum player;
     public final boolean hasMoved;
@@ -23,5 +23,9 @@ public class House {
     @Override
     public String toString() {
         return player + "_" + piece;
+    }
+
+    public String toCLI() {
+        return CLIHouse.get(toString());
     }
 }

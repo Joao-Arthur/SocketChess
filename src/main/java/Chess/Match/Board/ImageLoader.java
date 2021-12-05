@@ -54,7 +54,7 @@ public class ImageLoader {
     }
 
     private void loadImagesMap() {
-        imagesMap = new HashMap<String, BufferedImage>();
+        imagesMap = new HashMap<String, BufferedImage>(12);
         imagesMap.put(new House(PlayerEnum.BLACK, PieceEnum.BISHOP).toString(), blackBishop);
         imagesMap.put(new House(PlayerEnum.BLACK, PieceEnum.KING).toString(), blackKing);
         imagesMap.put(new House(PlayerEnum.BLACK, PieceEnum.KNIGHT).toString(), blackKnight);

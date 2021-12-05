@@ -20,20 +20,20 @@ public class MoveMessageSocketServiceTest {
   @Test
   @DisplayName("Should encode the movement into a string")
   public void encode() {
-    assertEquals(MoveMessageSocketService.encode(decoded1), encoded1);
-    assertEquals(MoveMessageSocketService.encode(decoded2), encoded2);
-    assertEquals(MoveMessageSocketService.encode(decoded3), encoded3);
-    assertEquals(MoveMessageSocketService.encode(decoded4), encoded4);
-    assertEquals(MoveMessageSocketService.encode(decoded5), encoded5);
+    assertEquals(encoded1, MoveMessageSocketService.encode(decoded1));
+    assertEquals(encoded2, MoveMessageSocketService.encode(decoded2));
+    assertEquals(encoded3, MoveMessageSocketService.encode(decoded3));
+    assertEquals(encoded4, MoveMessageSocketService.encode(decoded4));
+    assertEquals(encoded5, MoveMessageSocketService.encode(decoded5));
   }
 
   @Test
   @DisplayName("Should decode the string into a movement")
   public void decode() {
-    assertEquals(MoveMessageSocketService.decode(encoded1), decoded1);
-    assertEquals(MoveMessageSocketService.decode(encoded2), decoded2);
-    assertEquals(MoveMessageSocketService.decode(encoded3), decoded3);
-    assertEquals(MoveMessageSocketService.decode(encoded4), decoded4);
-    assertEquals(MoveMessageSocketService.decode(encoded5), decoded5);
+    assertEquals(decoded1, MoveMessageSocketService.decode(encoded1));
+    assertEquals(decoded2, MoveMessageSocketService.decode(encoded2));
+    assertEquals(decoded3, MoveMessageSocketService.decode(encoded3));
+    assertEquals(decoded4, MoveMessageSocketService.decode(encoded4));
+    assertEquals(decoded5, MoveMessageSocketService.decode(encoded5));
   }
 }

@@ -36,4 +36,15 @@ public class Model {
     public String toString() {
         return "";
     }
+
+    public String toCLI() {
+        final var boardRepresentation = new StringBuilder();
+        for (var yIndex = 0; yIndex < 8; yIndex++) {
+            for (var xIndex = 0; xIndex < 8; xIndex++) {
+                boardRepresentation.append(board[yIndex][xIndex].toCLI());
+            }
+            boardRepresentation.append('\n');
+        }
+        return boardRepresentation.toString();
+    }
 }

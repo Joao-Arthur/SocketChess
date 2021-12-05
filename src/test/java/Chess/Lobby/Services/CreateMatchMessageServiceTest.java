@@ -16,16 +16,16 @@ public class CreateMatchMessageServiceTest {
     @Test
     @DisplayName("Should encode the player into a string")
     public void encode() {
-        assertEquals(CreateMatchMessageService.encode(decoded1), encoded1);
-        assertEquals(CreateMatchMessageService.encode(decoded2), encoded2);
-        assertEquals(CreateMatchMessageService.encode(decoded3), encoded3);
+        assertEquals(encoded1, CreateMatchMessageService.encode(decoded1));
+        assertEquals(encoded2, CreateMatchMessageService.encode(decoded2));
+        assertEquals(encoded3, CreateMatchMessageService.encode(decoded3));
     }
 
     @Test
     @DisplayName("Should decode the string into a player")
     public void decode() {
-        assertEquals(CreateMatchMessageService.decode(encoded1), decoded1);
-        assertEquals(CreateMatchMessageService.decode(encoded2), decoded2);
-        assertEquals(CreateMatchMessageService.decode(encoded3), decoded3);
+        assertEquals(decoded1, CreateMatchMessageService.decode(encoded1));
+        assertEquals(decoded2, CreateMatchMessageService.decode(encoded2));
+        assertEquals(decoded3, CreateMatchMessageService.decode(encoded3));
     }
 }
