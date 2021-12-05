@@ -1,4 +1,6 @@
-package Chess.Match;
+package Chess.Match.Services;
+
+import Chess.Match.MovementDTO;
 
 public class MoveMessageSocketService {
     private static final String FROM_X = "1";

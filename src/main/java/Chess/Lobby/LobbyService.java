@@ -2,7 +2,7 @@ package Chess.Lobby;
 
 import Chess.Socket.SocketServer;
 import Chess.Socket.SocketInstance;
-import Chess.Lobby.Observers.CreateMatchObserver;
+import Chess.Lobby.Observers.CreateMatch;
 import Chess.Lobby.Services.CreateMatchMessageService;
 import Chess.Match.Player.PlayerEnum;
 import Chess.Socket.SocketClient;
@@ -12,7 +12,7 @@ final class LobbyService {
 
     public LobbyService() {
         dispatcher = new LobbyDispatcher();
-        dispatcher.register(new CreateMatchObserver());
+        dispatcher.register(new CreateMatch());
     }
 
     public void createServerForMatch() {

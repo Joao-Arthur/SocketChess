@@ -1,8 +1,9 @@
-package Chess.Match;
+package Chess.Match.Services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import Chess.Match.MovementDTO;
 
 public class MoveMessageSocketServiceTest {
   final MovementDTO decoded1 = MovementDTO.from(1, 2, 3, 4);

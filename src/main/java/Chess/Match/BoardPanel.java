@@ -10,6 +10,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.logging.Logger;
 import java.util.logging.Level;
+import Chess.Match.Observers.MovePiece;
 import Chess.Match.Piece.MovePiece.InvalidArgsException;
 import Chess.Match.Piece.MovePiece.InvalidMovementException;
 import Chess.Match.Piece.MovePiece.NoSuchPieceException;
@@ -31,7 +32,7 @@ public class BoardPanel extends JPanel {
                 repaint();
             }
         });
-        MatchDispatcher.register(new MatchObserverHandler(matchService, this));
+        MatchDispatcher.register(new MovePiece(matchService, this));
         boardImages = new BoardImages();
     }
 
