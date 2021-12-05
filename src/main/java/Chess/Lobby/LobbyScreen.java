@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.BoxLayout;
+import java.awt.FlowLayout;
 import javax.swing.Box;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
@@ -16,7 +17,7 @@ public class LobbyScreen implements GUIScreen {
 
     public LobbyScreen() {
         lobbyScreen = createLobbyScreen();
-        lobbyScreen.add(createSidebar());
+        lobbyScreen.add(createButtonsPanel());
         lobbyService = new LobbyService(lobbyScreen);
     }
 
@@ -30,39 +31,44 @@ public class LobbyScreen implements GUIScreen {
         return lobbyScreen;
     }
 
-    private JPanel createSidebar() {
-        final var sidebar = new JPanel();
-        sidebar.setLayout(new BoxLayout(sidebar, BoxLayout.LINE_AXIS));
-        sidebar.add(Box.createVerticalGlue());
-        sidebar.add(Box.createHorizontalGlue());
-        final var createMatchButton = createSidebarButton("criar partida");
+    private JPanel createButtonsPanel() {
+        final var content = new JPanel();
+        content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
+        content.add(Box.createVerticalGlue());
+        final var createMatchButton = createButton("criar partida");
         createMatchButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
                 lobbyService.createServerForMatch();
             }
         });
-        sidebar.add(createMatchButton);
-        sidebar.add(Box.createVerticalGlue());
-        sidebar.add(Box.createHorizontalGlue());
-        final var connectToMatchButton = createSidebarButton("conectar à partida");
+        content.add(createMatchButton);
+        content.add(Box.createVerticalGlue());
+        final var connectToMatchButton = createButton("conectar à partida");
         connectToMatchButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
                 lobbyService.createClientForMatch();
             }
         });
-        sidebar.add(connectToMatchButton);
-        sidebar.add(Box.createVerticalGlue());
-        sidebar.add(Box.createHorizontalGlue());
-        return sidebar;
+        content.add(connectToMatchButton);
+        content.add(Box.createVerticalGlue());
+        final var container = new JPanel(new FlowLayout());
+        container.setLayout(new BoxLayout(container, BoxLayout.LINE_AXIS));
+        container.add(Box.createVerticalGlue());
+        container.add(Box.createHorizontalGlue());
+        container.add(content);
+        container.add(Box.createVerticalGlue());
+        container.add(Box.createHorizontalGlue());
+        return container;
     }
 
-    private JButton createSidebarButton(String title) {
-        final var sidebarButton = new JButton(title);
-        final var size = new Dimension(150, 30);
-        sidebarButton.setPreferredSize(size);
-        return sidebarButton;
+    private JButton createButton(String title) {
+        final var contentButton = new JButton(title);
+        final var size = new Dimension(250, 35);
+        contentButton.setPreferredSize(size);
+        contentButton.setMaximumSize(size);
+        return contentButton;
     }
 
     public void dispose() {
