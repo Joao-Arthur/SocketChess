@@ -1,4 +1,4 @@
-package Chess.Lobby;
+package Chess.Lobby.Services;
 
 import Chess.Match.Player.PlayerEnum;
 
