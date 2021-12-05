@@ -8,17 +8,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SocketClient implements SocketInterface {
-    private SocketService service;
+    private final SocketService service = new SocketService();
 
     public SocketClient() {
-        try {
-            final var socket = new Socket(SocketConstants.URL, SocketConstants.PORT);
-            final var output = new PrintStream(socket.getOutputStream());
-            final var input = new Scanner(socket.getInputStream());
-            service = new SocketService(input, output, socket, null);
-        } catch (IOException exception) {
-            Logger.getLogger(SocketClient.class.getName()).log(Level.SEVERE, null, exception);
-        }
+        new Thread(() -> {
+            try {
+                final var socket = new Socket(SocketConstants.URL, SocketConstants.PORT);
+                final var output = new PrintStream(socket.getOutputStream());
+                final var input = new Scanner(socket.getInputStream());
+                service.setParams(input, output, socket, null);
+            } catch (IOException exception) {
+                Logger.getLogger(SocketClient.class.getName()).log(Level.SEVERE, null, exception);
+            }
+        }).start();
     }
 
     public SocketClient setManager(SocketManager manager) {

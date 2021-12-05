@@ -11,13 +11,13 @@ import java.util.logging.Logger;
 
 public class SocketService {
     private SocketManager manager;
-    private final Scanner input;
-    private final PrintStream output;
-    private final Socket socket;
-    private final ServerSocket serverSocket;
+    private Scanner input;
+    private PrintStream output;
+    private Socket socket;
+    private ServerSocket serverSocket;
     private boolean isOpen = true;
 
-    public SocketService(Scanner input, PrintStream output, Socket socket, ServerSocket serverSocket) {
+    public void setParams(Scanner input, PrintStream output, Socket socket, ServerSocket serverSocket) {
         this.input = input;
         this.output = output;
         this.socket = socket;
@@ -26,6 +26,9 @@ public class SocketService {
     }
 
     private void startObserving() {
+        manager.handleMessage(serverSocket != null
+                ? SocketMessages.SERVER_CREATED
+                : SocketMessages.CLIENT_CREATED);
         new Thread(() -> {
             try {
                 while (isOpen)
