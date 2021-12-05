@@ -8,9 +8,9 @@ import Chess.Events.Observer;
 final class MatchDispatcher implements Dispatcher {
     public final List<Observer> observers = new LinkedList<Observer>();
 
-    public void dispatch(String evemt) {
+    public void dispatch(String event) {
         for (final var observer : observers)
-            observer.handle(evemt);
+            observer.handle(event);
     }
 
     public void register(Observer observer) {

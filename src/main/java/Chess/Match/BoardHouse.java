@@ -22,6 +22,6 @@ public class BoardHouse {
 
     @Override
     public String toString() {
-        return new StringBuilder().append(player).append("_").append(piece).toString();
+        return player + "_" + piece;
     }
 }

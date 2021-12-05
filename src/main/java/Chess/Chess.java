@@ -11,7 +11,6 @@ public class Chess {
 
 /*
  * TODO
- * - tratar fechar o socket, manter aberto após partidas e etc
  * - peças no meio do caminho
  * - definir se é brancas ou pretas
  */

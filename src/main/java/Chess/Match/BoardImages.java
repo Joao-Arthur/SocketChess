@@ -6,6 +6,8 @@ import javax.imageio.ImageIO;
 import java.util.HashMap;
 import java.util.logging.Logger;
 import java.util.logging.Level;
+import Chess.Match.Piece.PieceEnum;
+import Chess.Match.Player.PlayerEnum;
 
 public class BoardImages {
     private BufferedImage blackBishop;
@@ -47,23 +49,22 @@ public class BoardImages {
     }
 
     private BufferedImage loadImage(String name) throws IOException {
-        return ImageIO.read(
-                getClass().getResource(new StringBuilder().append("Images/").append(name).append(".png").toString()));
+        return ImageIO.read(getClass().getResource("Images/" + name + ".png"));
     }
 
     private void loadImagesMap() {
         imagesMap = new HashMap<String, BufferedImage>();
-        imagesMap.put("BLACK_BISHOP", blackBishop);
-        imagesMap.put("BLACK_KING", blackKing);
-        imagesMap.put("BLACK_KNIGHT", blackKnight);
-        imagesMap.put("BLACK_PAWN", blackPawn);
-        imagesMap.put("BLACK_QUEEN", blackQueen);
-        imagesMap.put("BLACK_ROOK", blackRook);
-        imagesMap.put("WHITE_BISHOP", whiteBishop);
-        imagesMap.put("WHITE_KING", whiteKing);
-        imagesMap.put("WHITE_KNIGHT", whiteKnight);
-        imagesMap.put("WHITE_PAWN", whitePawn);
-        imagesMap.put("WHITE_QUEEN", whiteQueen);
-        imagesMap.put("WHITE_ROOK", whiteRook);
+        imagesMap.put(new BoardHouse(PlayerEnum.BLACK, PieceEnum.BISHOP).toString(), blackBishop);
+        imagesMap.put(new BoardHouse(PlayerEnum.BLACK, PieceEnum.KING).toString(), blackKing);
+        imagesMap.put(new BoardHouse(PlayerEnum.BLACK, PieceEnum.KNIGHT).toString(), blackKnight);
+        imagesMap.put(new BoardHouse(PlayerEnum.BLACK, PieceEnum.PAWN).toString(), blackPawn);
+        imagesMap.put(new BoardHouse(PlayerEnum.BLACK, PieceEnum.QUEEN).toString(), blackQueen);
+        imagesMap.put(new BoardHouse(PlayerEnum.BLACK, PieceEnum.ROOK).toString(), blackRook);
+        imagesMap.put(new BoardHouse(PlayerEnum.WHITE, PieceEnum.BISHOP).toString(), whiteBishop);
+        imagesMap.put(new BoardHouse(PlayerEnum.WHITE, PieceEnum.KING).toString(), whiteKing);
+        imagesMap.put(new BoardHouse(PlayerEnum.WHITE, PieceEnum.KNIGHT).toString(), whiteKnight);
+        imagesMap.put(new BoardHouse(PlayerEnum.WHITE, PieceEnum.PAWN).toString(), whitePawn);
+        imagesMap.put(new BoardHouse(PlayerEnum.WHITE, PieceEnum.QUEEN).toString(), whiteQueen);
+        imagesMap.put(new BoardHouse(PlayerEnum.WHITE, PieceEnum.ROOK).toString(), whiteRook);
     }
 }
