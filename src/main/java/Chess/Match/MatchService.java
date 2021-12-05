@@ -18,8 +18,8 @@ public class MatchService {
     MatchService(JComponent panel) {
         boardController = new BoardController();
         dispatcher = new MatchDispatcher();
-        dispatcher.register(new OpponentAbandoned());
-        dispatcher.register(new OpponentGiveUp());
+        dispatcher.register(new OpponentAbandoned(panel));
+        dispatcher.register(new OpponentGiveUp(panel));
         dispatcher.register(new MovePiece(boardController, panel));
         SocketInstance.get().setManager(new MatchSocketManager(dispatcher));
     }

@@ -4,7 +4,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComponent;
 import Chess.Events.Observer;
-import Chess.Match.MatchMessages;
 import Chess.Match.BoardController;
 import Chess.Match.Piece.MovePiece.InvalidArgsException;
 import Chess.Match.Piece.MovePiece.InvalidMovementException;
@@ -21,7 +20,7 @@ public class MovePiece implements Observer {
     }
 
     public void handle(String event) {
-        if (!event.startsWith(MatchMessages.MOVE_MESSAGE_PREFIX))
+        if (!event.startsWith(MoveMessageSocketService.PREFIX))
             return;
         try {
             boardController.movePiece(MoveMessageSocketService.decode(event));

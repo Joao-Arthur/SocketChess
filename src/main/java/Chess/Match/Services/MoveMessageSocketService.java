@@ -7,6 +7,7 @@ public class MoveMessageSocketService {
     private static final String FROM_Y = "2";
     private static final String TO_X = "3";
     private static final String TO_Y = "4";
+    public static final String PREFIX = "MOVE: ";
     private static final String format = "MOVE: (" + FROM_X + "," + FROM_Y + ") -> (" + TO_X + "," + TO_Y + ")";
 
     public static String encode(Movement movement) {
