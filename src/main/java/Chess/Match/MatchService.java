@@ -3,23 +3,25 @@ package Chess.Match;
 import java.awt.Point;
 import Chess.GUI.GUI;
 import Chess.Lobby.LobbyScreen;
+import Chess.Match.Observers.MovePiece;
 import Chess.Match.Observers.OpponentAbandoned;
 import Chess.Match.Observers.OpponentGiveUp;
 import Chess.Match.Services.MoveMessageSocketService;
 import Chess.Socket.SocketInstance;
 import java.awt.image.BufferedImage;
+import javax.swing.JComponent;
 
 public class MatchService {
     final BoardController boardController;
+    final MatchDispatcher dispatcher;
 
-    MatchService() {
-        final MatchDispatcher dispatcher;
+    MatchService(JComponent panel) {
+        boardController = new BoardController();
         dispatcher = new MatchDispatcher();
         dispatcher.register(new OpponentAbandoned());
         dispatcher.register(new OpponentGiveUp());
-        dispatcher.register(new MovePiece())
-        SocketInstance.get().setManager(new MatchSocketManager());
-        boardController = new BoardController();
+        dispatcher.register(new MovePiece(boardController, panel));
+        SocketInstance.get().setManager(new MatchSocketManager(dispatcher));
     }
 
     public BufferedImage getPieceImage(Point indexPoint) {
@@ -33,12 +35,12 @@ public class MatchService {
         GUI.getInstance().goTo(new LobbyScreen());
     }
 
-    public void movePiece(MovementDTO movement) {
+    public void movePiece(Movement movement) {
         boardController.movePiece(movement);
         sendMovementToOpponent(movement);
     }
 
-    private void sendMovementToOpponent(MovementDTO movement) {
+    private void sendMovementToOpponent(Movement movement) {
         SocketInstance.get().send(MoveMessageSocketService.encode(movement));
     }
 }

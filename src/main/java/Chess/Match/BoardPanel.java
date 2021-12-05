@@ -10,19 +10,17 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.logging.Logger;
 import java.util.logging.Level;
-import Chess.Match.Observers.MovePiece;
 import Chess.Match.Piece.MovePiece.InvalidArgsException;
 import Chess.Match.Piece.MovePiece.InvalidMovementException;
 import Chess.Match.Piece.MovePiece.NoSuchPieceException;
 
 public class BoardPanel extends JPanel {
-    private final MatchService matchService;
+    private MatchService matchService;
     Point currentClick;
     Point lastClick;
     BoardImages boardImages;
 
-    public BoardPanel(MatchService matchService) {
-        this.matchService = matchService;
+    public BoardPanel() {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -32,8 +30,11 @@ public class BoardPanel extends JPanel {
                 repaint();
             }
         });
-        MatchDispatcher.register(new MovePiece(matchService, this));
         boardImages = new BoardImages();
+    }
+
+    public void setService(MatchService matchService) {
+        this.matchService = matchService;
     }
 
     private void verifyMovedPiece() {

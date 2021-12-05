@@ -16,11 +16,12 @@ public class MatchScreen implements GUIScreen {
     private final MatchService matchService;
 
     public MatchScreen(PlayerEnum opponentColor) {
-        System.out.println("opponent is: " + opponentColor);
         matchScreen = createMatchScreen();
         matchScreen.add(createSidebar(), BorderLayout.EAST);
-        matchService = new MatchService();
-        matchScreen.add(new BoardPanel(matchService));
+        final var boardPanel = new BoardPanel();
+        matchService = new MatchService(boardPanel);
+        boardPanel.setService(matchService);
+        matchScreen.add(boardPanel);
     }
 
     private JFrame createMatchScreen() {

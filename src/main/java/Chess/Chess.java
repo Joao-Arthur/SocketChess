@@ -13,4 +13,6 @@ public class Chess {
  * TODO
  * - peças no meio do caminho
  * - definir se é brancas ou pretas
+ * - implementar uma jogada por jogador
+ * - validar mover apenas as proprias peças
  */

@@ -27,16 +27,18 @@ public class SocketService {
 
     private void startObserving() {
         new Thread(() -> {
-            while (isOpen)
-                receive(input.nextLine());
+            try {
+                while (isOpen)
+                    receive(input.nextLine());
+            } catch (NoSuchElementException exception) {
+                manager.handleMessage(SocketMessages.NO_SUCH_ELEMENT);
+            }
             try {
                 input.close();
                 output.close();
                 socket.close();
                 if (serverSocket != null)
                     serverSocket.close();
-            } catch (NoSuchElementException exception) {
-                manager.handleMessage(SocketMessages.NO_SUCH_ELEMENT);
             } catch (IOException exception) {
                 Logger.getLogger(SocketServer.class.getName()).log(Level.SEVERE, null, exception);
             }

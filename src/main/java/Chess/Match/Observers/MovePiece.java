@@ -5,18 +5,18 @@ import java.util.logging.Logger;
 import javax.swing.JComponent;
 import Chess.Events.Observer;
 import Chess.Match.MatchMessages;
-import Chess.Match.MatchService;
+import Chess.Match.BoardController;
 import Chess.Match.Piece.MovePiece.InvalidArgsException;
 import Chess.Match.Piece.MovePiece.InvalidMovementException;
 import Chess.Match.Piece.MovePiece.NoSuchPieceException;
 import Chess.Match.Services.MoveMessageSocketService;
 
 public class MovePiece implements Observer {
-    private final MatchService matchService;
+    private final BoardController boardController;
     private final JComponent component;
 
-    public MovePiece(MatchService matchService, JComponent component) {
-        this.matchService = matchService;
+    public MovePiece(BoardController boardController, JComponent component) {
+        this.boardController = boardController;
         this.component = component;
     }
 
@@ -24,7 +24,7 @@ public class MovePiece implements Observer {
         if (!event.startsWith(MatchMessages.MOVE_MESSAGE_PREFIX))
             return;
         try {
-            matchService.movePiece(MoveMessageSocketService.decode(event));
+            boardController.movePiece(MoveMessageSocketService.decode(event));
             component.repaint();
         } catch (InvalidArgsException exception) {
             Logger.getLogger(MovePiece.class.getName()).log(Level.SEVERE, null, exception);
