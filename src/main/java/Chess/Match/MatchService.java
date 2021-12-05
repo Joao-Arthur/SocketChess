@@ -1,6 +1,8 @@
 package Chess.Match;
 
 import java.awt.Point;
+import java.awt.image.BufferedImage;
+import java.awt.Component;
 import Chess.GUI.GUI;
 import Chess.Lobby.LobbyScreen;
 import Chess.Match.Board.Controller;
@@ -9,19 +11,17 @@ import Chess.Match.Observers.OpponentAbandoned;
 import Chess.Match.Observers.OpponentGiveUp;
 import Chess.Match.Services.MoveMessageSocketService;
 import Chess.Socket.SocketInstance;
-import java.awt.image.BufferedImage;
-import javax.swing.JComponent;
 
 public class MatchService {
     final Controller controller;
     final MatchDispatcher dispatcher;
 
-    MatchService(JComponent panel) {
+    MatchService(Component component) {
         controller = new Controller();
         dispatcher = new MatchDispatcher();
-        dispatcher.register(new OpponentAbandoned(panel));
-        dispatcher.register(new OpponentGiveUp(panel));
-        dispatcher.register(new MovePiece(controller, panel));
+        dispatcher.register(new OpponentAbandoned(component));
+        dispatcher.register(new OpponentGiveUp(component));
+        dispatcher.register(new MovePiece(controller, component));
         SocketInstance.get().setManager(new MatchSocketManager(dispatcher));
     }
 

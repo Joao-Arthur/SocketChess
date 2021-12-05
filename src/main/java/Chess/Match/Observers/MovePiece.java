@@ -2,7 +2,7 @@ package Chess.Match.Observers;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JComponent;
+import java.awt.Component;
 import Chess.Events.Observer;
 import Chess.Match.Board.Controller;
 import Chess.Match.Board.Piece.MovePiece.InvalidArgsException;
@@ -12,9 +12,9 @@ import Chess.Match.Services.MoveMessageSocketService;
 
 public class MovePiece implements Observer {
     private final Controller controller;
-    private final JComponent component;
+    private final Component component;
 
-    public MovePiece(Controller controller, JComponent component) {
+    public MovePiece(Controller controller, Component component) {
         this.controller = controller;
         this.component = component;
     }

@@ -1,6 +1,6 @@
 package Chess.Match.Observers;
 
-import javax.swing.JComponent;
+import java.awt.Component;
 import javax.swing.JOptionPane;
 import Chess.GUI.GUI;
 import Chess.Lobby.LobbyScreen;
@@ -9,9 +9,9 @@ import Chess.Socket.SocketInstance;
 import Chess.Events.Observer;
 
 public class OpponentGiveUp implements Observer {
-    private final JComponent component;
+    private final Component component;
 
-    public OpponentGiveUp(JComponent component) {
+    public OpponentGiveUp(Component component) {
         this.component = component;
     }
 

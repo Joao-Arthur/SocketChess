@@ -17,7 +17,7 @@ public class LobbyScreen implements GUIScreen {
     public LobbyScreen() {
         lobbyScreen = createLobbyScreen();
         lobbyScreen.add(createSidebar());
-        lobbyService = new LobbyService();
+        lobbyService = new LobbyService(lobbyScreen);
     }
 
     private JFrame createLobbyScreen() {

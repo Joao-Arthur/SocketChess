@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SocketService {
-    private SocketManager manager;
+    public SocketManager manager;
     private Scanner input;
     private PrintStream output;
     private Socket socket;

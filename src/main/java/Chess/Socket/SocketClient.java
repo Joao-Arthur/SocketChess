@@ -2,6 +2,7 @@ package Chess.Socket;
 
 import java.io.IOException;
 import java.io.PrintStream;
+import java.net.ConnectException;
 import java.net.Socket;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -17,6 +18,8 @@ public class SocketClient implements SocketInterface {
                 final var output = new PrintStream(socket.getOutputStream());
                 final var input = new Scanner(socket.getInputStream());
                 service.setParams(input, output, socket, null);
+            } catch (ConnectException exception) {
+                service.manager.handleMessage(SocketMessages.CONNECTION_REFUSED);
             } catch (IOException exception) {
                 Logger.getLogger(SocketClient.class.getName()).log(Level.SEVERE, null, exception);
             }

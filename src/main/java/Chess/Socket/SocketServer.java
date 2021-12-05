@@ -2,6 +2,7 @@ package Chess.Socket;
 
 import java.io.IOException;
 import java.io.PrintStream;
+import java.net.BindException;
 import java.net.ServerSocket;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -18,6 +19,8 @@ public class SocketServer implements SocketInterface {
                 final var output = new PrintStream(socket.getOutputStream());
                 final var input = new Scanner(socket.getInputStream());
                 service.setParams(input, output, socket, socketServer);
+            } catch (BindException exception) {
+                service.manager.handleMessage(SocketMessages.PORT_IN_USE);
             } catch (IOException exception) {
                 Logger.getLogger(SocketServer.class.getName()).log(Level.SEVERE, null, exception);
             }

@@ -5,20 +5,20 @@ import javax.swing.JOptionPane;
 import Chess.Events.Observer;
 import Chess.Socket.SocketMessages;
 
-public class ConnectionRefused implements Observer {
+public class PortInUse implements Observer {
     private final Component component;
 
-    public ConnectionRefused(Component component) {
+    public PortInUse(Component component) {
         this.component = component;
     }
 
     public void handle(String event) {
-        if (!event.equals(SocketMessages.CONNECTION_REFUSED))
+        if (!event.equals(SocketMessages.PORT_IN_USE))
             return;
         JOptionPane.showMessageDialog(
                 component,
-                "Não foi possível encontrar um servidor socket rodando!", "Atenção!",
+                "A porta utilizada pelo socket já está em uso!", "Atenção!",
                 JOptionPane.ERROR_MESSAGE);
-        System.out.println("CONNECTION_REFUSED");
+        System.out.println("PORT_IN_USE");
     }
 }
