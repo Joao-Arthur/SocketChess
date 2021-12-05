@@ -3,7 +3,7 @@ package Chess.Match;
 import java.awt.Point;
 import Chess.GUI.GUI;
 import Chess.Lobby.LobbyScreen;
-import Chess.Match.Board.BoardController;
+import Chess.Match.Board.Controller;
 import Chess.Match.Observers.MovePiece;
 import Chess.Match.Observers.OpponentAbandoned;
 import Chess.Match.Observers.OpponentGiveUp;
@@ -13,20 +13,20 @@ import java.awt.image.BufferedImage;
 import javax.swing.JComponent;
 
 public class MatchService {
-    final BoardController boardController;
+    final Controller controller;
     final MatchDispatcher dispatcher;
 
     MatchService(JComponent panel) {
-        boardController = new BoardController();
+        controller = new Controller();
         dispatcher = new MatchDispatcher();
         dispatcher.register(new OpponentAbandoned(panel));
         dispatcher.register(new OpponentGiveUp(panel));
-        dispatcher.register(new MovePiece(boardController, panel));
+        dispatcher.register(new MovePiece(controller, panel));
         SocketInstance.get().setManager(new MatchSocketManager(dispatcher));
     }
 
     public BufferedImage getPieceImage(Point indexPoint) {
-        return boardController.getPieceImage(indexPoint);
+        return controller.getPieceImage(indexPoint);
     }
 
     public void giveUp() {
@@ -37,7 +37,7 @@ public class MatchService {
     }
 
     public void movePiece(Movement movement) {
-        boardController.movePiece(movement);
+        controller.movePiece(movement);
         sendMovementToOpponent(movement);
     }
 

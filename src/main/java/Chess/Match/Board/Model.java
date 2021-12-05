@@ -8,11 +8,11 @@ import Chess.Match.Board.Piece.PieceFactory;
 import Chess.Match.Board.Piece.MovePiece.MovePieceDTO;
 import Chess.Match.Player.PlayerEnum;
 
-public class BoardModel {
-    private BoardHouse[][] board;
+public class Model {
+    private House[][] board;
 
-    BoardModel() {
-        board = BoardInitialState.boardInitialState;
+    Model() {
+        board = ModelInitialState.board;
     }
 
     public void movePiece(Movement movement) {
@@ -23,13 +23,13 @@ public class BoardModel {
         update(movement);
     }
 
-    public BoardHouse getModelHouse(Point point) {
+    public House getModelHouse(Point point) {
         return board[point.y][point.x];
     }
 
     private void update(Movement movement) {
-        board[movement.to.y][movement.to.x] = new BoardHouse(getModelHouse(movement.from));
-        board[movement.from.y][movement.from.x] = new BoardHouse(PlayerEnum.NONE, PieceEnum.NONE);
+        board[movement.to.y][movement.to.x] = new House(getModelHouse(movement.from));
+        board[movement.from.y][movement.from.x] = new House(PlayerEnum.NONE, PieceEnum.NONE);
     }
 
     @Override

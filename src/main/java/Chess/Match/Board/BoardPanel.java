@@ -10,7 +10,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.logging.Logger;
 import java.util.logging.Level;
-
 import Chess.Match.MatchService;
 import Chess.Match.Movement;
 import Chess.Match.Board.Piece.MovePiece.InvalidArgsException;
@@ -21,7 +20,6 @@ public class BoardPanel extends JPanel {
     private MatchService matchService;
     Point currentClick;
     Point lastClick;
-    BoardImages boardImages;
 
     public BoardPanel() {
         addMouseListener(new MouseAdapter() {
@@ -33,7 +31,6 @@ public class BoardPanel extends JPanel {
                 repaint();
             }
         });
-        boardImages = new BoardImages();
     }
 
     public void setService(MatchService matchService) {
@@ -63,12 +60,12 @@ public class BoardPanel extends JPanel {
         try {
             matchService.movePiece(movement);
         } catch (InvalidArgsException exception) {
-            Logger.getLogger(BoardModel.class.getName()).log(Level.SEVERE, null, exception);
+            Logger.getLogger(BoardPanel.class.getName()).log(Level.SEVERE, null, exception);
         } catch (InvalidMovementException exception) {
-            // Logger.getLogger(BoardModel.class.getName()).log(Level.INFO, null,
+            // Logger.getLogger(BoardPanel.class.getName()).log(Level.INFO, null,
             // exception);
         } catch (NoSuchPieceException exception) {
-            // Logger.getLogger(BoardModel.class.getName()).log(Level.INFO, null,
+            // Logger.getLogger(BoardPanel.class.getName()).log(Level.INFO, null,
             // exception);
         }
 
@@ -129,11 +126,11 @@ public class BoardPanel extends JPanel {
 
     private Color getSquareColor(int squareSize, Point point, Point indexPoint) {
         if (isSquareClicked(point, squareSize))
-            return BoardColors.FOCUS;
+            return Colors.FOCUS;
         if ((indexPoint.x + indexPoint.y) % 2 == 1) {
-            return BoardColors.DARK;
+            return Colors.DARK;
         } else {
-            return BoardColors.LIGHT;
+            return Colors.LIGHT;
         }
     }
 }
