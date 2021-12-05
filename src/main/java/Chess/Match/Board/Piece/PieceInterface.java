@@ -1,6 +1,6 @@
-package Chess.Match.Piece;
+package Chess.Match.Board.Piece;
 
-import Chess.Match.Piece.MovePiece.MovePieceDTO;
+import Chess.Match.Board.Piece.MovePiece.MovePieceDTO;
 
 public interface PieceInterface {
     public void movePiece(MovePieceDTO movePieceDTO);

@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import Chess.GUI.GUIScreen;
+import Chess.Match.Board.BoardPanel;
 import Chess.Match.Player.PlayerEnum;
 
 public class MatchScreen implements GUIScreen {

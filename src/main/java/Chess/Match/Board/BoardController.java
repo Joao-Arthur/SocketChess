@@ -1,13 +1,16 @@
-package Chess.Match;
+package Chess.Match.Board;
 
 import java.awt.image.BufferedImage;
+
+import Chess.Match.Movement;
+
 import java.awt.Point;
 
 public class BoardController {
     BoardModel boardModel;
     BoardImages boardImages;
 
-    BoardController() {
+    public BoardController() {
         boardModel = new BoardModel();
         boardImages = new BoardImages();
     }

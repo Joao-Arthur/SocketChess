@@ -4,10 +4,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComponent;
 import Chess.Events.Observer;
-import Chess.Match.BoardController;
-import Chess.Match.Piece.MovePiece.InvalidArgsException;
-import Chess.Match.Piece.MovePiece.InvalidMovementException;
-import Chess.Match.Piece.MovePiece.NoSuchPieceException;
+import Chess.Match.Board.BoardController;
+import Chess.Match.Board.Piece.MovePiece.InvalidArgsException;
+import Chess.Match.Board.Piece.MovePiece.InvalidMovementException;
+import Chess.Match.Board.Piece.MovePiece.NoSuchPieceException;
 import Chess.Match.Services.MoveMessageSocketService;
 
 public class MovePiece implements Observer {

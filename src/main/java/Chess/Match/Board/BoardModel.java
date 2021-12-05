@@ -1,9 +1,11 @@
-package Chess.Match;
+package Chess.Match.Board;
 
 import java.awt.Point;
-import Chess.Match.Piece.PieceEnum;
-import Chess.Match.Piece.PieceFactory;
-import Chess.Match.Piece.MovePiece.MovePieceDTO;
+
+import Chess.Match.Movement;
+import Chess.Match.Board.Piece.PieceEnum;
+import Chess.Match.Board.Piece.PieceFactory;
+import Chess.Match.Board.Piece.MovePiece.MovePieceDTO;
 import Chess.Match.Player.PlayerEnum;
 
 public class BoardModel {

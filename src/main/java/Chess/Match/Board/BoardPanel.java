@@ -1,4 +1,4 @@
-package Chess.Match;
+package Chess.Match.Board;
 
 import javax.swing.JPanel;
 import java.awt.Point;
@@ -10,9 +10,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.logging.Logger;
 import java.util.logging.Level;
-import Chess.Match.Piece.MovePiece.InvalidArgsException;
-import Chess.Match.Piece.MovePiece.InvalidMovementException;
-import Chess.Match.Piece.MovePiece.NoSuchPieceException;
+
+import Chess.Match.MatchService;
+import Chess.Match.Movement;
+import Chess.Match.Board.Piece.MovePiece.InvalidArgsException;
+import Chess.Match.Board.Piece.MovePiece.InvalidMovementException;
+import Chess.Match.Board.Piece.MovePiece.NoSuchPieceException;
 
 public class BoardPanel extends JPanel {
     private MatchService matchService;

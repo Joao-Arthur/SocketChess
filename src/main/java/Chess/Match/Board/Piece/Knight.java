@@ -1,8 +1,8 @@
-package Chess.Match.Piece;
+package Chess.Match.Board.Piece;
 
-import Chess.Match.Piece.MovePiece.MovePieceService;
-import Chess.Match.Piece.MovePiece.MovePieceDTO;
-import Chess.Match.Piece.MovePiece.InvalidMovementException;
+import Chess.Match.Board.Piece.MovePiece.InvalidMovementException;
+import Chess.Match.Board.Piece.MovePiece.MovePieceDTO;
+import Chess.Match.Board.Piece.MovePiece.MovePieceService;
 
 public class Knight implements PieceInterface {
     public void movePiece(MovePieceDTO movePieceDTO) {

@@ -1,4 +1,4 @@
-package Chess.Match.Piece.MovePiece;
+package Chess.Match.Board.Piece.MovePiece;
 
 public class InvalidMovementException extends RuntimeException {
     public InvalidMovementException(String message) {

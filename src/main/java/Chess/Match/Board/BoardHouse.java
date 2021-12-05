@@ -1,6 +1,6 @@
-package Chess.Match;
+package Chess.Match.Board;
 
-import Chess.Match.Piece.PieceEnum;
+import Chess.Match.Board.Piece.PieceEnum;
 import Chess.Match.Player.PlayerEnum;
 
 public class BoardHouse {

@@ -1,4 +1,4 @@
-package Chess.Match.Piece.MovePiece;
+package Chess.Match.Board.Piece.MovePiece;
 
 public class NoSuchPieceException extends RuntimeException {
     public NoSuchPieceException(String message) {

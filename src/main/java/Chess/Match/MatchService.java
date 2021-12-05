@@ -3,6 +3,7 @@ package Chess.Match;
 import java.awt.Point;
 import Chess.GUI.GUI;
 import Chess.Lobby.LobbyScreen;
+import Chess.Match.Board.BoardController;
 import Chess.Match.Observers.MovePiece;
 import Chess.Match.Observers.OpponentAbandoned;
 import Chess.Match.Observers.OpponentGiveUp;

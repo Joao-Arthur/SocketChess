@@ -1,7 +1,7 @@
-package Chess.Match.Piece;
+package Chess.Match.Board.Piece;
 
-import Chess.Match.Piece.MovePiece.MovePieceDTO;
-import Chess.Match.Piece.MovePiece.InvalidMovementException;
+import Chess.Match.Board.Piece.MovePiece.InvalidMovementException;
+import Chess.Match.Board.Piece.MovePiece.MovePieceDTO;
 
 public class None implements PieceInterface {
     public void movePiece(MovePieceDTO movePieceDTO) {

@@ -1,4 +1,4 @@
-package Chess.Match;
+package Chess.Match.Board;
 
 import java.io.IOException;
 import java.awt.image.BufferedImage;
@@ -6,7 +6,8 @@ import javax.imageio.ImageIO;
 import java.util.HashMap;
 import java.util.logging.Logger;
 import java.util.logging.Level;
-import Chess.Match.Piece.PieceEnum;
+
+import Chess.Match.Board.Piece.PieceEnum;
 import Chess.Match.Player.PlayerEnum;
 
 public class BoardImages {
@@ -24,7 +25,7 @@ public class BoardImages {
     private BufferedImage whiteRook;
     public HashMap<String, BufferedImage> imagesMap;
 
-    BoardImages() {
+    public BoardImages() {
         loadImages();
         loadImagesMap();
     }
