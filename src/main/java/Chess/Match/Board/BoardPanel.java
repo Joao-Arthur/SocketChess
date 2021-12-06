@@ -16,13 +16,17 @@ import Chess.Match.Board.Piece.MovePiece.InvalidArgsException;
 import Chess.Match.Board.Piece.MovePiece.InvalidMovementException;
 import Chess.Match.Board.Piece.MovePiece.NoSuchPieceException;
 import Chess.Match.Board.Piece.MovePiece.RepeatedMoveException;
+import Chess.Match.Player.PlayerEnum;
 
 public class BoardPanel extends JPanel {
+    private final PlayerEnum player;
+
     private MatchService matchService;
     Point currentClick;
     Point lastClick;
 
-    public BoardPanel() {
+    public BoardPanel(PlayerEnum player) {
+        this.player = player;
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -51,13 +55,23 @@ public class BoardPanel extends JPanel {
         final var squareSize = totalSize / 8;
         final var lastXClicked = (lastClick.x - paddingX) / squareSize;
         final var lastYClicked = (lastClick.y - paddingY) / squareSize;
-        final var from = new Point(lastXClicked, lastYClicked);
+        final var from = player == PlayerEnum.BLACK
+                ? new Point(7 - lastXClicked, 7 - lastYClicked)
+                : new Point(lastXClicked, lastYClicked);
         final var currentXClicked = (currentClick.x - paddingX) / squareSize;
         final var currentYClicked = (currentClick.y - paddingY) / squareSize;
-        final var to = new Point(currentXClicked, currentYClicked);
+        final var to = player == PlayerEnum.BLACK
+                ? new Point(7 - currentXClicked, 7 - currentYClicked)
+                : new Point(currentXClicked, currentYClicked);
         if (from.equals(to))
             return;
         final var movement = Movement.from(from, to);
+        move(movement);
+        currentClick = null;
+        lastClick = null;
+    }
+
+    private void move(Movement movement) {
         try {
             matchService.movePlayerPiece(movement);
         } catch (InvalidArgsException exception) {
@@ -69,9 +83,6 @@ public class BoardPanel extends JPanel {
         } catch (Exception exception) {
             Logger.getLogger(BoardPanel.class.getName()).log(Level.WARNING, null, exception);
         }
-
-        currentClick = null;
-        lastClick = null;
     }
 
     private boolean isPointClicked(Point currentPoint, Point clickPoint) {
@@ -115,7 +126,9 @@ public class BoardPanel extends JPanel {
                 final var x = paddingX + xIndex * squareSize;
                 final var y = paddingY + yIndex * squareSize;
                 final var point = new Point(x, y);
-                final var indexPoint = new Point(xIndex, yIndex);
+                final var indexPoint = player == PlayerEnum.BLACK
+                        ? new Point(7 - xIndex, 7 - yIndex)
+                        : new Point(xIndex, yIndex);
                 drawer.setPaint(getSquareColor(squareSize, point, indexPoint));
                 drawer.fillRect(x, y, squareSize, squareSize);
                 final var imageToDraw = matchService.getPieceImage(indexPoint);

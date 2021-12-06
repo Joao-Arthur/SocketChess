@@ -19,7 +19,7 @@ public class MatchScreen implements GUIScreen {
     public MatchScreen(PlayerEnum player) {
         matchScreen = createMatchScreen();
         matchScreen.add(createSidebar(), BorderLayout.EAST);
-        final var boardPanel = new BoardPanel();
+        final var boardPanel = new BoardPanel(player);
         matchService = new MatchService(boardPanel, player);
         boardPanel.setService(matchService);
         matchScreen.add(boardPanel);

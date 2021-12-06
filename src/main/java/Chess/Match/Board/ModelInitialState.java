@@ -9,8 +9,8 @@ public class ModelInitialState {
                     new House(PlayerEnum.BLACK, PieceEnum.ROOK),
                     new House(PlayerEnum.BLACK, PieceEnum.KNIGHT),
                     new House(PlayerEnum.BLACK, PieceEnum.BISHOP),
-                    new House(PlayerEnum.BLACK, PieceEnum.KING),
                     new House(PlayerEnum.BLACK, PieceEnum.QUEEN),
+                    new House(PlayerEnum.BLACK, PieceEnum.KING),
                     new House(PlayerEnum.BLACK, PieceEnum.BISHOP),
                     new House(PlayerEnum.BLACK, PieceEnum.KNIGHT),
                     new House(PlayerEnum.BLACK, PieceEnum.ROOK)
@@ -79,8 +79,8 @@ public class ModelInitialState {
                     new House(PlayerEnum.WHITE, PieceEnum.ROOK),
                     new House(PlayerEnum.WHITE, PieceEnum.KNIGHT),
                     new House(PlayerEnum.WHITE, PieceEnum.BISHOP),
-                    new House(PlayerEnum.WHITE, PieceEnum.KING),
                     new House(PlayerEnum.WHITE, PieceEnum.QUEEN),
+                    new House(PlayerEnum.WHITE, PieceEnum.KING),
                     new House(PlayerEnum.WHITE, PieceEnum.BISHOP),
                     new House(PlayerEnum.WHITE, PieceEnum.KNIGHT),
                     new House(PlayerEnum.WHITE, PieceEnum.ROOK)
