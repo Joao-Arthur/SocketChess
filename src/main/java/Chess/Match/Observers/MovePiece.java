@@ -8,6 +8,7 @@ import Chess.Match.Board.Controller;
 import Chess.Match.Board.Piece.MovePiece.InvalidArgsException;
 import Chess.Match.Board.Piece.MovePiece.InvalidMovementException;
 import Chess.Match.Board.Piece.MovePiece.NoSuchPieceException;
+import Chess.Match.Board.Piece.MovePiece.RepeatedMoveException;
 import Chess.Match.Services.MoveMessageSocketService;
 
 public class MovePiece implements Observer {
@@ -27,12 +28,12 @@ public class MovePiece implements Observer {
             component.repaint();
         } catch (InvalidArgsException exception) {
             Logger.getLogger(MovePiece.class.getName()).log(Level.SEVERE, null, exception);
-        } catch (InvalidMovementException exception) {
-            // Logger.getLogger(MatchObserverHandler.class.getName()).log(Level.INFO, null,
-            // exception);
-        } catch (NoSuchPieceException exception) {
-            // Logger.getLogger(MatchObserverHandler.class.getName()).log(Level.INFO, null,
-            // exception);
+        } catch (InvalidMovementException
+                | NoSuchPieceException
+                | RepeatedMoveException exception) {
+            Logger.getLogger(MovePiece.class.getName()).log(Level.FINEST, null, exception);
+        } catch (Exception exception) {
+            Logger.getLogger(MovePiece.class.getName()).log(Level.WARNING, null, exception);
         }
     }
 }

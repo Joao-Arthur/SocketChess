@@ -10,8 +10,7 @@ public class CreateMatch implements Observer {
     public void handle(String event) {
         if (!event.startsWith(CreateMatchMessageService.PREFIX))
             return;
-        GUI.getInstance().goTo(new MatchScreen(
-                GetPlayerByOpponentService.get(
-                        CreateMatchMessageService.decode(event))));
+        GUI.getInstance()
+                .goTo(new MatchScreen(new GetPlayerByOpponentService(CreateMatchMessageService.decode(event)).get()));
     }
 }

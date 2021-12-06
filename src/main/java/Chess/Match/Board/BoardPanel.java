@@ -15,6 +15,7 @@ import Chess.Match.Movement;
 import Chess.Match.Board.Piece.MovePiece.InvalidArgsException;
 import Chess.Match.Board.Piece.MovePiece.InvalidMovementException;
 import Chess.Match.Board.Piece.MovePiece.NoSuchPieceException;
+import Chess.Match.Board.Piece.MovePiece.RepeatedMoveException;
 
 public class BoardPanel extends JPanel {
     private MatchService matchService;
@@ -61,12 +62,12 @@ public class BoardPanel extends JPanel {
             matchService.movePlayerPiece(movement);
         } catch (InvalidArgsException exception) {
             Logger.getLogger(BoardPanel.class.getName()).log(Level.SEVERE, null, exception);
-        } catch (InvalidMovementException exception) {
-            // Logger.getLogger(BoardPanel.class.getName()).log(Level.INFO, null,
-            // exception);
-        } catch (NoSuchPieceException exception) {
-            // Logger.getLogger(BoardPanel.class.getName()).log(Level.INFO, null,
-            // exception);
+        } catch (InvalidMovementException
+                | NoSuchPieceException
+                | RepeatedMoveException exception) {
+            Logger.getLogger(BoardPanel.class.getName()).log(Level.FINEST, null, exception);
+        } catch (Exception exception) {
+            Logger.getLogger(BoardPanel.class.getName()).log(Level.WARNING, null, exception);
         }
 
         currentClick = null;
