@@ -1,8 +1,8 @@
 package Chess.Lobby;
 
-import java.awt.Component;
 import Chess.Socket.SocketServer;
 import Chess.Socket.SocketInstance;
+import Chess.GUI.GUIScreen;
 import Chess.Lobby.Observers.ClientConnectionCreated;
 import Chess.Lobby.Observers.ConnectionRefused;
 import Chess.Lobby.Observers.CreateMatch;
@@ -13,13 +13,13 @@ import Chess.Socket.SocketClient;
 final class LobbyService {
     final LobbyDispatcher dispatcher;
 
-    public LobbyService(Component frame) {
+    public LobbyService(GUIScreen component) {
         dispatcher = new LobbyDispatcher();
         dispatcher.register(new CreateMatch());
         dispatcher.register(new ClientConnectionCreated());
         dispatcher.register(new ServerConnectionCreated());
-        dispatcher.register(new ConnectionRefused(frame));
-        dispatcher.register(new PortInUse(frame));
+        dispatcher.register(new ConnectionRefused(component));
+        dispatcher.register(new PortInUse(component));
     }
 
     public void createServerForMatch() {

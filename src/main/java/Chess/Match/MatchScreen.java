@@ -61,4 +61,14 @@ public class MatchScreen implements GUIScreen {
     public void dispose() {
         matchScreen.dispose();
     }
+
+    public JFrame getScreen() {
+        return matchScreen;
+    }
+
+    public void enable() {
+    }
+
+    public void disable() {
+    }
 }

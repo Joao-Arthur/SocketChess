@@ -14,11 +14,13 @@ import Chess.GUI.GUIScreen;
 public class LobbyScreen implements GUIScreen {
     private final JFrame lobbyScreen;
     private final LobbyService lobbyService;
+    private JButton createMatch;
+    private JButton connectMatch;
 
     public LobbyScreen() {
         lobbyScreen = createLobbyScreen();
         lobbyScreen.add(createButtonsPanel());
-        lobbyService = new LobbyService(lobbyScreen);
+        lobbyService = new LobbyService(this);
     }
 
     private JFrame createLobbyScreen() {
@@ -35,23 +37,29 @@ public class LobbyScreen implements GUIScreen {
         final var content = new JPanel();
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
         content.add(Box.createVerticalGlue());
-        final var createMatchButton = createButton("criar partida");
-        createMatchButton.addMouseListener(new MouseAdapter() {
+        createMatch = createButton("criar partida");
+        createMatch.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
+                if (!createMatch.isEnabled())
+                    return;
+                disable();
                 lobbyService.createServerForMatch();
             }
         });
-        content.add(createMatchButton);
+        content.add(createMatch);
         content.add(Box.createVerticalGlue());
-        final var connectToMatchButton = createButton("conectar à partida");
-        connectToMatchButton.addMouseListener(new MouseAdapter() {
+        connectMatch = createButton("conectar à partida");
+        connectMatch.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
+                if (!connectMatch.isEnabled())
+                    return;
+                disable();
                 lobbyService.createClientForMatch();
             }
         });
-        content.add(connectToMatchButton);
+        content.add(connectMatch);
         content.add(Box.createVerticalGlue());
         final var container = new JPanel(new FlowLayout());
         container.setLayout(new BoxLayout(container, BoxLayout.LINE_AXIS));
@@ -73,5 +81,19 @@ public class LobbyScreen implements GUIScreen {
 
     public void dispose() {
         lobbyScreen.dispose();
+    }
+
+    public JFrame getScreen() {
+        return lobbyScreen;
+    }
+
+    public void enable() {
+        createMatch.setEnabled(true);
+        connectMatch.setEnabled(true);
+    }
+
+    public void disable() {
+        createMatch.setEnabled(false);
+        connectMatch.setEnabled(false);
     }
 }
