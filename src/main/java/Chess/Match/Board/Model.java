@@ -10,16 +10,18 @@ import Chess.Match.Player.PlayerEnum;
 
 public class Model {
     private House[][] board;
+    private final PlayerEnum player;
 
-    Model() {
+    Model(PlayerEnum player) {
         board = ModelInitialState.board;
+        this.player = player;
     }
 
     public void movePiece(Movement movement) {
         final var fromHouse = getModelHouse(movement.from);
         final var toHouse = getModelHouse(movement.to);
         PieceFactory.from(fromHouse.piece)
-                .movePiece(new MovePieceDTO(movement.from, fromHouse, movement.to, toHouse));
+                .movePiece(new MovePieceDTO(player, movement.from, fromHouse, movement.to, toHouse));
         update(movement);
     }
 

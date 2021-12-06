@@ -11,7 +11,5 @@ public class Chess {
 
 /*
  * TODO
- * - eventos do lobby
  * - implementar uma jogada por jogador
- * - validar mover apenas as proprias peças
  */

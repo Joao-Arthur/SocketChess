@@ -1,8 +1,8 @@
 package Chess.Match.Board;
 
 import java.awt.image.BufferedImage;
-
 import Chess.Match.Movement;
+import Chess.Match.Player.PlayerEnum;
 
 import java.awt.Point;
 
@@ -10,8 +10,8 @@ public class Controller {
     Model model;
     ImageLoader imageLoader;
 
-    public Controller() {
-        model = new Model();
+    public Controller(PlayerEnum player) {
+        model = new Model(player);
         imageLoader = new ImageLoader();
     }
 

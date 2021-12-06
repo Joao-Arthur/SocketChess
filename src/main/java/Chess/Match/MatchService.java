@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.awt.Component;
 import Chess.GUI.GUI;
 import Chess.Lobby.LobbyScreen;
+import Chess.Match.Player.PlayerEnum;
 import Chess.Match.Board.Controller;
 import Chess.Match.Observers.MovePiece;
 import Chess.Match.Observers.OpponentAbandoned;
@@ -16,8 +17,8 @@ public class MatchService {
     final Controller controller;
     final MatchDispatcher dispatcher;
 
-    MatchService(Component component) {
-        controller = new Controller();
+    MatchService(Component component, PlayerEnum player) {
+        controller = new Controller(player);
         dispatcher = new MatchDispatcher();
         dispatcher.register(new OpponentAbandoned(component));
         dispatcher.register(new OpponentGiveUp(component));

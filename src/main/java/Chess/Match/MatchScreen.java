@@ -16,11 +16,11 @@ public class MatchScreen implements GUIScreen {
     private final JFrame matchScreen;
     private final MatchService matchService;
 
-    public MatchScreen(PlayerEnum opponentColor) {
+    public MatchScreen(PlayerEnum player) {
         matchScreen = createMatchScreen();
         matchScreen.add(createSidebar(), BorderLayout.EAST);
         final var boardPanel = new BoardPanel();
-        matchService = new MatchService(boardPanel);
+        matchService = new MatchService(boardPanel, player);
         boardPanel.setService(matchService);
         matchScreen.add(boardPanel);
     }

@@ -1,10 +1,11 @@
 package Chess.Match.Board.Piece.MovePiece;
 
 import java.awt.Point;
-
 import Chess.Match.Board.House;
+import Chess.Match.Player.PlayerEnum;
 
 public class MovePieceDTO {
+    public final PlayerEnum player;
     public final Point from;
     public final House fromHouse;
     public final Point to;
@@ -14,7 +15,8 @@ public class MovePieceDTO {
     public final int distanceY;
     public final int deltaY;
 
-    public MovePieceDTO(Point from, House fromHouse, Point to, House toHouse) {
+    public MovePieceDTO(PlayerEnum player, Point from, House fromHouse, Point to, House toHouse) {
+        this.player = player;
         this.from = from;
         this.fromHouse = fromHouse;
         this.to = to;
