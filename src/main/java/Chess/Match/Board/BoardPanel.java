@@ -58,7 +58,7 @@ public class BoardPanel extends JPanel {
             return;
         final var movement = Movement.from(from, to);
         try {
-            matchService.movePiece(movement);
+            matchService.movePlayerPiece(movement);
         } catch (InvalidArgsException exception) {
             Logger.getLogger(BoardPanel.class.getName()).log(Level.SEVERE, null, exception);
         } catch (InvalidMovementException exception) {

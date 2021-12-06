@@ -1,18 +1,16 @@
 package Chess.Match.Board;
 
 import java.awt.image.BufferedImage;
+import java.awt.Point;
 import Chess.Match.Movement;
 import Chess.Match.Player.PlayerEnum;
 
-import java.awt.Point;
-
 public class Controller {
-    Model model;
-    ImageLoader imageLoader;
+    private final Model model;
+    private final ImageLoader imageLoader = new ImageLoader();
 
     public Controller(PlayerEnum player) {
         model = new Model(player);
-        imageLoader = new ImageLoader();
     }
 
     public BufferedImage getPieceImage(Point indexPoint) {
@@ -24,7 +22,12 @@ public class Controller {
         return imageLoader.imagesMap.get(currentHouse.toString());
     }
 
-    public void movePiece(Movement movement) {
-        model.movePiece(movement);
+    public void movePlayerPiece(Movement movement) {
+        model.movePlayerPiece(movement);
     }
+
+    public void moveOpponentPiece(Movement movement) {
+        model.moveOpponentPiece(movement);
+    }
+
 }

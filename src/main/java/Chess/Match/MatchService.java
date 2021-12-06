@@ -37,8 +37,8 @@ public class MatchService {
         GUI.getInstance().goTo(new LobbyScreen());
     }
 
-    public void movePiece(Movement movement) {
-        controller.movePiece(movement);
+    public void movePlayerPiece(Movement movement) {
+        controller.movePlayerPiece(movement);
         sendMovementToOpponent(movement);
     }
 

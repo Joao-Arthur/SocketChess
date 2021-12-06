@@ -23,7 +23,7 @@ public class MovePiece implements Observer {
         if (!event.startsWith(MoveMessageSocketService.PREFIX))
             return;
         try {
-            controller.movePiece(MoveMessageSocketService.decode(event));
+            controller.moveOpponentPiece(MoveMessageSocketService.decode(event));
             component.repaint();
         } catch (InvalidArgsException exception) {
             Logger.getLogger(MovePiece.class.getName()).log(Level.SEVERE, null, exception);

@@ -5,6 +5,7 @@ import java.awt.Point;
 import Chess.Match.Movement;
 import Chess.Match.Board.Piece.PieceEnum;
 import Chess.Match.Board.Piece.PieceFactory;
+import Chess.Match.Board.Piece.MovePiece.InvalidMovementException;
 import Chess.Match.Board.Piece.MovePiece.MovePieceDTO;
 import Chess.Match.Player.PlayerEnum;
 
@@ -17,12 +18,24 @@ public class Model {
         this.player = player;
     }
 
-    public void movePiece(Movement movement) {
+    public void movePlayerPiece(Movement movement) {
+        final var dto = getDTO(movement);
+        if(dto.fromHouse.player != player) throw new InvalidMovementException("fromPlayer != player");
+        PieceFactory.from(dto.fromHouse.piece).movePiece(dto);
+        update(movement);
+    }
+
+    public void moveOpponentPiece(Movement movement) {
+        final var dto = getDTO(movement);
+        if(dto.fromHouse.player == player) throw new InvalidMovementException("fromPlayer == player");
+        PieceFactory.from(dto.fromHouse.piece).movePiece(dto);
+        update(movement);
+    }
+
+    private MovePieceDTO getDTO(Movement movement) {
         final var fromHouse = getModelHouse(movement.from);
         final var toHouse = getModelHouse(movement.to);
-        PieceFactory.from(fromHouse.piece)
-                .movePiece(new MovePieceDTO(player, movement.from, fromHouse, movement.to, toHouse));
-        update(movement);
+        return new MovePieceDTO(player, movement.from, fromHouse, movement.to, toHouse);
     }
 
     public House getModelHouse(Point point) {

@@ -8,8 +8,3 @@ public class Chess {
         GUI.getInstance().goTo(new LobbyScreen());
     }
 }
-
-/*
- * TODO
- * - implementar uma jogada por jogador
- */
