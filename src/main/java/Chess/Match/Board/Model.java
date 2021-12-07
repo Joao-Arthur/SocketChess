@@ -16,7 +16,7 @@ public class Model {
     private PlayerEnum lastPlayerToMove = PlayerEnum.BLACK;
 
     Model(PlayerEnum player) {
-        board = ModelInitialState.board;
+        board = ModelInitialState.getBoard();
         this.player = player;
     }
 

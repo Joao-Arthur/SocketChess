@@ -21,9 +21,4 @@ public class GUI {
             currentScreen = null;
         }
     }
-
-    public void closeAndExit() {
-        disposeCurrentScreen();
-        System.exit(0);
-    }
 }
