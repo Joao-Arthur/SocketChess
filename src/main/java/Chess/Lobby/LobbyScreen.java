@@ -7,8 +7,6 @@ import javax.swing.BoxLayout;
 import java.awt.FlowLayout;
 import javax.swing.Box;
 import java.awt.Dimension;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import Chess.GUI.GUIScreen;
 
 public class LobbyScreen implements GUIScreen {
@@ -38,26 +36,20 @@ public class LobbyScreen implements GUIScreen {
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
         content.add(Box.createVerticalGlue());
         createMatch = createButton("criar partida");
-        createMatch.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (!createMatch.isEnabled())
-                    return;
-                disable();
-                lobbyService.createServerForMatch();
-            }
+        createMatch.addActionListener(e -> {
+            if (!createMatch.isEnabled())
+                return;
+            disable();
+            lobbyService.createServerForMatch();
         });
         content.add(createMatch);
         content.add(Box.createVerticalGlue());
         connectMatch = createButton("conectar à partida");
-        connectMatch.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (!connectMatch.isEnabled())
-                    return;
-                disable();
-                lobbyService.createClientForMatch();
-            }
+        connectMatch.addActionListener(e -> {
+            if (!connectMatch.isEnabled())
+                return;
+            disable();
+            lobbyService.createClientForMatch();  
         });
         content.add(connectMatch);
         content.add(Box.createVerticalGlue());
