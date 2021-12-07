@@ -27,7 +27,7 @@ public class MatchScreen implements GUIScreen {
         final var matchScreen = new JFrame();
         matchScreen.setVisible(true);
         matchScreen.setSize(800, 650);
-        matchScreen.setTitle("Match | Socket Chess");
+        matchScreen.setTitle("Partida | Socket Chess");
         matchScreen.setLocationRelativeTo(null);
         matchScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         return matchScreen;
@@ -37,7 +37,9 @@ public class MatchScreen implements GUIScreen {
         final var sidebar = new JPanel();
         final var giveUpButton = createSidebarButton("desistir");
         giveUpButton.addActionListener(e -> {
-            if (JOptionPane.showConfirmDialog(matchScreen, "Tem certeza que quer desistir?", "Desistir", JOptionPane.WARNING_MESSAGE) != JOptionPane.YES_OPTION) return;
+            if (JOptionPane.showConfirmDialog(matchScreen, "Tem certeza que quer desistir?", "Desistir",
+                    JOptionPane.WARNING_MESSAGE) != JOptionPane.YES_OPTION)
+                return;
             matchService.giveUp();
         });
         sidebar.add(giveUpButton);

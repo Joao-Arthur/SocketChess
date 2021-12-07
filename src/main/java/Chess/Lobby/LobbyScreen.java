@@ -25,7 +25,7 @@ public class LobbyScreen implements GUIScreen {
         final var lobbyScreen = new JFrame();
         lobbyScreen.setVisible(true);
         lobbyScreen.setSize(500, 300);
-        lobbyScreen.setTitle("Socket Chess");
+        lobbyScreen.setTitle("Início | Socket Chess");
         lobbyScreen.setLocationRelativeTo(null);
         lobbyScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         return lobbyScreen;
@@ -49,7 +49,7 @@ public class LobbyScreen implements GUIScreen {
             if (!connectMatch.isEnabled())
                 return;
             disable();
-            lobbyService.createClientForMatch();  
+            lobbyService.createClientForMatch();
         });
         content.add(connectMatch);
         content.add(Box.createVerticalGlue());
