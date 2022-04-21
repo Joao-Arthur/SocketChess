@@ -1,4 +1,4 @@
-# Socket Chess
+# SocketChess
 
 ## Sobre o projeto
 
